@@ -14,6 +14,10 @@ In this lab you work with the SharePoint Framework to extend client-side web par
 - [Building custom property pane fields](./Demos/02-custom-fields)
 - [Leveraging the SPFx PnP Reusable Property Pane Controls](./Demos/03-pnp-controls)
 
+## Watch the Module - Video
+
+This module has been recorded and is available in the SharePoint Development YouTube channel: [SharePoint Framework Training - Developing with the SharePoint Framework: Working with the Web Part Property Pane](https://www.youtube.com/watch?v=4QLY6z3RGug&list=PLR9nK3mnD-OV-RPXQ3Lco845qoEy7VJoc)
+
 ## Contributors
 
 |        Roles         |                        Author(s)                        |
