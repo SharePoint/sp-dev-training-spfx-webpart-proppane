@@ -1,6 +1,9 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT license.
+
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
-  "id": "2c63754d-18aa-4856-912f-8c5888adb1af",
+  "id": "b25a7629-2ff0-4083-ad87-432b2540addc",
   "alias": "HelloPropertyPaneWebPart",
   "componentType": "WebPart",
 
@@ -22,7 +25,7 @@
     "properties": {
       "description": "HelloPropertyPane",
       "myContinent": "North America",
-      "numContinentsVisited": 4
+      "numContinentsVisited": 4      
     }
   }]
 }
