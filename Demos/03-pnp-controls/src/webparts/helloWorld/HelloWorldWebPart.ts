@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT license.
+
 import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
@@ -6,18 +9,19 @@ import {
 } from '@microsoft/sp-webpart-base';
 import { escape } from '@microsoft/sp-lodash-subset';
 
-import { 
+import styles from './HelloWorldWebPart.module.scss';
+import * as strings from 'HelloWorldWebPartStrings';
+
+import {
   IPropertyFieldGroupOrPerson,
-  PropertyFieldPeoplePicker, 
-  PrincipalType 
+  PropertyFieldPeoplePicker,
+  PrincipalType
 } from '@pnp/spfx-property-controls/lib/PropertyFieldPeoplePicker';
+
 import { 
   PropertyFieldCollectionData, 
   CustomCollectionFieldType 
 } from '@pnp/spfx-property-controls/lib/PropertyFieldCollectionData';
-
-import styles from './HelloWorldWebPart.module.scss';
-import * as strings from 'HelloWorldWebPartStrings';
 
 export interface IHelloWorldWebPartProps {
   description: string;
@@ -51,11 +55,9 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
         this.properties.people.forEach((person) => {
           peopleList = peopleList + `<li>${ person.fullName } (${ person.email })</li>`;
         });
-
-        if (peopleList.length > 0) {
-          this.domElement.getElementsByClassName('selectedPeople')[0].innerHTML = `<ul>${ peopleList }</ul>`;
-        }
-      }
+      
+        this.domElement.getElementsByClassName('selectedPeople')[0].innerHTML = `<ul>${ peopleList }</ul>`;
+      }      
 
       if (this.properties.expansionOptions && this.properties.expansionOptions.length > 0) {
         let expansionOptions: string  = '';
@@ -65,7 +67,7 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
         if (expansionOptions.length > 0) {
           this.domElement.getElementsByClassName('expansionOptions')[0].innerHTML = `<ul>${ expansionOptions }</ul>`;
         }
-      }
+      }      
   }
 
   protected get dataVersion(): Version {
@@ -125,7 +127,7 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
                       type: CustomCollectionFieldType.string
                     }
                   ]
-                })
+                })                                
               ]
             }
           ]

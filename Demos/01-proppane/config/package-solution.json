@@ -2,10 +2,9 @@
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
     "name": "hello-property-pane-client-side-solution",
-    "id": "dafd5b07-cc6b-4eb9-823e-0c914767ef1a",
+    "id": "039255fd-c3fb-4e27-ab1a-0c82847364f3",
     "version": "1.0.0.0",
-    "includeClientSideAssets": true,
-    "isDomainIsolated": false
+    "includeClientSideAssets": true
   },
   "paths": {
     "zippedPackage": "solution/hello-property-pane.sppkg"

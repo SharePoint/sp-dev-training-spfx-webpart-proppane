@@ -1,13 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "pnpprops-client-side-solution",
-    "id": "2c9efbba-78b6-430c-9d96-c4bc9c490d19",
+    "name": "hello-world-client-side-solution",
+    "id": "96b95c58-4e98-4e7e-a3e9-143d8cc67e6a",
     "version": "1.0.0.0",
-    "includeClientSideAssets": true,
-    "isDomainIsolated": false
+    "includeClientSideAssets": true
   },
   "paths": {
-    "zippedPackage": "solution/pnpprops.sppkg"
+    "zippedPackage": "solution/hello-world.sppkg"
   }
 }

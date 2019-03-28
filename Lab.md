@@ -38,7 +38,6 @@ In this exercise, you will get hands-on experience in manipulating the property 
     - **Which baseline packages do you want to target for your component(s)?:** SharePoint Online only (latest)
     - **Where do you want to place the files?:** Use the current folder
     - **Do you want to allow the tenant admin the choice of being able to deploy the solution to all sites immediately without running any feature deployment or adding apps in sites?:** No
-    - **Will the components in the solution require permissions to access web APIs that are unique and not shared with other components in the tenant?:** No
     - **Which type of client-side component to create?:** WebPart
     - **What is your Web part name?:** HelloPropertyPane
     - **What is your Web part description?:** HelloPropertyPane description
@@ -72,7 +71,7 @@ With a working web part, the next step is to customize the property pane experie
 
     ```ts
     myContinent: string;
-    numContentsVisited: number;
+    numContinentsVisited: number;
     ```
 
 1. Update the web part rendering to display the values of these two properties:
@@ -156,17 +155,17 @@ Now that the web part has two new custom properties, the next step is to extend 
 
 ### Add Control Validation
 
-The previous steps added a slider control to allow the user to select 1-6 as the number of continents they have visited. But there are only five (5) continents... six is an invalid choice. Add validation logic to block this settings.
+In a previous step the user was given a property where they could enter the name of the continent in which they live. Add validation logic to ensure they enter a valid continent name.
 
 1. In the **HelloPropertyPaneWebPart.ts**, add the following method to the `HelloPropertyPaneWebPart` class. This method takes a string as an input and returns a string. This allows you to do custom validation logic. If this method returns an empty string, the value is considered valid; otherwise, the returned string is used as the error message.
 
     ```ts
     private validateContinents(textboxValue: string): string {
-      const validContinentOptions: string[] = ['africa', 'antarctica', 'asia', 'north america', 'south america'];
+      const validContinentOptions: string[] = ['africa', 'antarctica', 'asia', 'australia', 'europe', 'north america', 'south america'];
       const inputToValidate: string = textboxValue.toLowerCase();
 
       return (validContinentOptions.indexOf(inputToValidate) === -1)
-        ? 'Invalid continent entry; valid options are "Africa", "Antarctica", "Asia", "North America", and "South America"'
+        ? 'Invalid continent entry; valid options are "Africa", "Antarctica", "Asia", "Australia", "Europe", "North America", and "South America"'
         : '';
     }
     ```
@@ -393,7 +392,7 @@ In this exercise, you will learn how to leverage existing 3rd party controls fro
 
 ### Add the People Picker control to the web part
 
-1. Locate the web part class in the **src\webparts\\\*\\*.WebPart.ts** file.
+1. Locate the web part class in the **src\webparts\\\*\\*WebPart.ts** file.
 
     > The actual path will depends on the name you gave the web part when running the Yeoman generator.
 
@@ -474,7 +473,7 @@ In order to test the web part, it should be run in a SharePoint Online environme
 
 ### Add the Collection Data control to the web part
 
-1. Locate the web part class in the **src\webparts\\\*\\*.WebPart.ts** file.
+1. Locate the web part class in the **src\webparts\\\*\\*WebPart.ts** file.
 
     > The actual path will depends on the name you gave the web part when running the Yeoman generator.
 

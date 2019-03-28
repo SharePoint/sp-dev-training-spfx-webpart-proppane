@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT license.
+
 import * as React from 'react';
 import {
   Dropdown,
@@ -24,6 +27,8 @@ export default class ContinentSelector extends React.Component<IContinentSelecto
       { "key": "Africa", "text": "Africa" },
       { "key": "Antarctica", "text": "Antarctica" },
       { "key": "Asia", "text": "Asia" },
+      { "key": "Australia", "text": "Australia" },
+      { "key": "Europe", "text": "Europe" },
       { "key": "North America", "text": "North America" },
       { "key": "South America", "text": "South America" },
     ];
