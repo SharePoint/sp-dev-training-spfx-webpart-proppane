@@ -1,12 +1,9 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-
 import { Version } from '@microsoft/sp-core-library';
+import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import {
-  BaseClientSideWebPart,
   IPropertyPaneConfiguration,
   PropertyPaneTextField
-} from '@microsoft/sp-webpart-base';
+} from '@microsoft/sp-property-pane';
 import { escape } from '@microsoft/sp-lodash-subset';
 
 import styles from './HelloWorldWebPart.module.scss';
@@ -50,24 +47,24 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
         </div>
       </div>`;
 
-      if (this.properties.people && this.properties.people.length > 0) {
-        let peopleList: string = '';
-        this.properties.people.forEach((person) => {
-          peopleList = peopleList + `<li>${ person.fullName } (${ person.email })</li>`;
-        });
-      
-        this.domElement.getElementsByClassName('selectedPeople')[0].innerHTML = `<ul>${ peopleList }</ul>`;
-      }      
+    if (this.properties.people && this.properties.people.length > 0) {
+      let peopleList: string = '';
+      this.properties.people.forEach((person) => {
+        peopleList = peopleList + `<li>${ person.fullName } (${ person.email })</li>`;
+      });
+    
+      this.domElement.getElementsByClassName('selectedPeople')[0].innerHTML = `<ul>${ peopleList }</ul>`;
+    }      
 
-      if (this.properties.expansionOptions && this.properties.expansionOptions.length > 0) {
-        let expansionOptions: string  = '';
-        this.properties.expansionOptions.forEach((option) => {
-          expansionOptions = expansionOptions + `<li>${ option['Region'] }: ${ option['Comment'] } </li>`;
-        });
-        if (expansionOptions.length > 0) {
-          this.domElement.getElementsByClassName('expansionOptions')[0].innerHTML = `<ul>${ expansionOptions }</ul>`;
-        }
-      }      
+    if (this.properties.expansionOptions && this.properties.expansionOptions.length > 0) {
+      let expansionOptions: string  = '';
+      this.properties.expansionOptions.forEach((option) => {
+        expansionOptions = expansionOptions + `<li>${ option['Region'] }: ${ option['Comment'] } </li>`;
+      });
+      if (expansionOptions.length > 0) {
+        this.domElement.getElementsByClassName('expansionOptions')[0].innerHTML = `<ul>${ expansionOptions }</ul>`;
+      }
+    }
   }
 
   protected get dataVersion(): Version {
@@ -127,7 +124,7 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
                       type: CustomCollectionFieldType.string
                     }
                   ]
-                })                                
+                })                         
               ]
             }
           ]
