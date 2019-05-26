@@ -25,6 +25,8 @@ In this exercise, you will get hands-on experience in manipulating the property 
 
 ### Create a new SPFx Solution & Web Part
 
+> NOTE: The instructions below assume you are using v1.8.2 of the SharePoint Framework Yeoman generator.
+
 1. Open a command prompt and change to the folder where you want to create the project.
 1. Run the SharePoint Framework Yeoman generator by executing the following command:
 
@@ -38,6 +40,7 @@ In this exercise, you will get hands-on experience in manipulating the property 
     - **Which baseline packages do you want to target for your component(s)?:** SharePoint Online only (latest)
     - **Where do you want to place the files?:** Use the current folder
     - **Do you want to allow the tenant admin the choice of being able to deploy the solution to all sites immediately without running any feature deployment or adding apps in sites?:** No
+    - **Will the components in the solution require permissions to access web APIs that are unique and not shared with other components in the tenant?:** No
     - **Which type of client-side component to create?:** WebPart
     - **What is your Web part name?:** HelloPropertyPane
     - **What is your Web part description?:** HelloPropertyPane description
@@ -145,7 +148,7 @@ Now that the web part has two new custom properties, the next step is to extend 
         ```ts
         PropertyPaneSlider('numContinentsVisited', {
           label: 'Number of continents I\'ve visited',
-          min: 1, max: 6, showValue: true,
+          min: 1, max: 7, showValue: true,
         })
         ```
 
