@@ -13,7 +13,7 @@ In this demo, you will learn how to leverage existing 3rd party controls from th
 
 ## Add the People Picker control to the web part
 
-1. Locate the web part class in the **src\webparts\\\*\\*WebPart.ts** file.
+1. Locate the web part class in the **src\webparts\\\*\\\*WebPart.ts** file.
 
     > The actual path will depends on the name you gave the web part when running the Yeoman generator.
 
@@ -94,7 +94,7 @@ In order to test the web part, it should be run in a SharePoint Online environme
 
 ## Add the Collection Data control to the web part
 
-1. Locate the web part class in the **src\webparts\\\*\\*WebPart.ts** file.
+1. Locate the web part class in the **src\webparts\\\*\\\*WebPart.ts** file.
 
     > The actual path will depends on the name you gave the web part when running the Yeoman generator.
 
