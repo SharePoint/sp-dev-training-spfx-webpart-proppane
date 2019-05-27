@@ -91,7 +91,7 @@ With a working web part, the next step is to customize the property pane experie
 1. Updates to the web part's manifest file will not be picked up until you restart the local web server.
     1. In the command prompt, press <kbd>CTRL+C</kbd> to stop the local web server.
     1. Rebuild and restart the local web server by executing the command `gulp serve`.
-    1. When the SharePoint workbench loads, add the web part back tot he page to see the properties.
+    1. When the SharePoint workbench loads, add the web part back to the page to see the properties.
 
         ![Screenshot of HelloPropertyPane with no values](../../Images/EditPropPane-AddProps-02.png)
 
