@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT license.
+
 import { Version } from '@microsoft/sp-core-library';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import {
@@ -30,15 +33,15 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
 
   public render(): void {
     this.domElement.innerHTML = `
-      <div class="${ styles.helloWorld }">
-        <div class="${ styles.container }">
-          <div class="${ styles.row }">
-            <div class="${ styles.column }">
-              <span class="${ styles.title }">Welcome to SharePoint!</span>
-              <p class="${ styles.subTitle }">Customize SharePoint experiences using Web Parts.</p>
-              <p class="${ styles.description }">${escape(this.properties.description)}</p>
-              <a href="https://aka.ms/spfx" class="${ styles.button }">
-                <span class="${ styles.label }">Learn more</span>
+      <div class="${ styles.helloWorld}">
+        <div class="${ styles.container}">
+          <div class="${ styles.row}">
+            <div class="${ styles.column}">
+              <span class="${ styles.title}">Welcome to SharePoint!</span>
+              <p class="${ styles.subTitle}">Customize SharePoint experiences using Web Parts.</p>
+              <p class="${ styles.description}">${escape(this.properties.description)}</p>
+              <a href="https://aka.ms/spfx" class="${ styles.button}">
+                <span class="${ styles.label}">Learn more</span>
               </a>
               <div class="selectedPeople"></div>
               <div class="expansionOptions"></div>
@@ -50,11 +53,11 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
     if (this.properties.people && this.properties.people.length > 0) {
       let peopleList: string = '';
       this.properties.people.forEach((person) => {
-        peopleList = peopleList + `<li>${ person.fullName } (${ person.email })</li>`;
+        peopleList = peopleList + `<li>${person.fullName} (${person.email})</li>`;
       });
-    
-      this.domElement.getElementsByClassName('selectedPeople')[0].innerHTML = `<ul>${ peopleList }</ul>`;
-    }      
+
+      this.domElement.getElementsByClassName('selectedPeople')[0].innerHTML = `<ul>${peopleList}</ul>`;
+    }
 
     if (this.properties.expansionOptions && this.properties.expansionOptions.length > 0) {
       let expansionOptions: string  = '';
@@ -64,7 +67,7 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
       if (expansionOptions.length > 0) {
         this.domElement.getElementsByClassName('expansionOptions')[0].innerHTML = `<ul>${ expansionOptions }</ul>`;
       }
-    }
+    }    
   }
 
   protected get dataVersion(): Version {
@@ -124,7 +127,7 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
                       type: CustomCollectionFieldType.string
                     }
                   ]
-                })                         
+                })                        
               ]
             }
           ]
