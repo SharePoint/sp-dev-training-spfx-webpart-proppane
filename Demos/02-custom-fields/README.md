@@ -2,29 +2,11 @@
 
 In this demo, you will extend the property pane by creating your own custom field control.
 
-### Add React & Fabric React to the project
+### Create custom dropdown control of continents
 
-The property pane controls provided by Microsoft that were used in the last exercise are built using React and Fabric React. To ensure the custom field control looks similar to those, you will add React & Fabric React to the project.
-
-1. Open a command prompt & make change to the root folder of the project created in the last demo.
+1. Open a command prompt and change to the root folder of the project created in the last demo.
 
     > NOTE: If you did not create the project in the previous demo, you will find a complete working version that you can start from in the **[Demos\01-proppane](../01-proppane)** folder.
-
-1. Add React & the React DOM control to the project by executing the following command.
-
-    > NOTE: Specific versions of the packages are used in these commands to ensure they match the versions of the packages that a new SharePoint Framework React-based project uses.
-
-    ```shell
-    npm install react@16.3.2 react-dom@16.3.2 --save
-    ```
-
-1. Add the TypeScript type declarations for React to the project by executing the following command:
-
-    ```shell
-    npm install @types/react@16.4.2 @types/react-dom@16.0.5 --save-dev
-    ```
-
-### Create custom dropdown control of continents
 
 1. Within the project, locate the **src** folder and create a subfolder **controls**.
 1. Create a new folder **PropertyPaneContinentSelector** within the **controls** folder to contain the new drop down control.

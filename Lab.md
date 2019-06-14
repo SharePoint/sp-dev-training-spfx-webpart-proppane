@@ -25,6 +25,8 @@ In this exercise, you will get hands-on experience in manipulating the property 
 
 ### Create a new SPFx Solution & Web Part
 
+> NOTE: The instructions below assume you are using v1.8.2 of the SharePoint Framework Yeoman generator.
+
 1. Open a command prompt and change to the folder where you want to create the project.
 1. Run the SharePoint Framework Yeoman generator by executing the following command:
 
@@ -38,6 +40,7 @@ In this exercise, you will get hands-on experience in manipulating the property 
     - **Which baseline packages do you want to target for your component(s)?:** SharePoint Online only (latest)
     - **Where do you want to place the files?:** Use the current folder
     - **Do you want to allow the tenant admin the choice of being able to deploy the solution to all sites immediately without running any feature deployment or adding apps in sites?:** No
+    - **Will the components in the solution require permissions to access web APIs that are unique and not shared with other components in the tenant?:** No
     - **Which type of client-side component to create?:** WebPart
     - **What is your Web part name?:** HelloPropertyPane
     - **What is your Web part description?:** HelloPropertyPane description
@@ -109,7 +112,7 @@ With a working web part, the next step is to customize the property pane experie
 1. Updates to the web part's manifest file will not be picked up until you restart the local web server.
     1. In the command prompt, press <kbd>CTRL+C</kbd> to stop the local web server.
     1. Rebuild and restart the local web server by executing the command `gulp serve`.
-    1. When the SharePoint workbench loads, add the web part back tot he page to see the properties.
+    1. When the SharePoint workbench loads, add the web part back to the page to see the properties.
 
         ![Screenshot of HelloPropertyPane with no values](./Images/EditPropPane-AddProps-02.png)
 
@@ -145,7 +148,7 @@ Now that the web part has two new custom properties, the next step is to extend 
         ```ts
         PropertyPaneSlider('numContinentsVisited', {
           label: 'Number of continents I\'ve visited',
-          min: 1, max: 6, showValue: true,
+          min: 1, max: 7, showValue: true,
         })
         ```
 
@@ -199,29 +202,11 @@ In a previous step the user was given a property where they could enter the name
 
 In this exercise, you will extend the property pane by creating your own custom field control.
 
-### Add React & Fabric React to the project
+### Create custom dropdown control of continents
 
-The property pane controls provided by Microsoft that were used in the last exercise are built using React and Fabric React. To ensure the custom field control looks similar to those, you will add React & Fabric React to the project.
-
-1. Open a command prompt & make change to the root folder of the project created in the last exercise.
+1. Open a command prompt and change to the root folder of the project created in the last exercise.
 
     > NOTE: If you did not create the project in the previous exercise, you will find a complete working version that you can start from in the **[Demos\01-proppane](/Demos/01-proppane)** folder.
-
-1. Add React & the React DOM control to the project by executing the following command.
-
-    > NOTE: Specific versions of the packages are used in these commands to ensure they match the versions of the packages that a new SharePoint Framework React-based project uses.
-
-    ```shell
-    npm install react@16.3.2 react-dom@16.3.2 --save
-    ```
-
-1. Add the TypeScript type declarations for React to the project by executing the following command:
-
-    ```shell
-    npm install @types/react@16.4.2 @types/react-dom@16.0.5 --save-dev
-    ```
-
-### Create custom dropdown control of continents
 
 1. Within the project, locate the **src** folder and create a subfolder **controls**.
 1. Create a new folder **PropertyPaneContinentSelector** within the **controls** folder to contain the new drop down control.
@@ -392,7 +377,7 @@ In this exercise, you will learn how to leverage existing 3rd party controls fro
 
 ### Add the People Picker control to the web part
 
-1. Locate the web part class in the **src\webparts\\\*\\*WebPart.ts** file.
+1. Locate the web part class in the **src\webparts\\\*\\\*WebPart.ts** file.
 
     > The actual path will depends on the name you gave the web part when running the Yeoman generator.
 
@@ -473,7 +458,7 @@ In order to test the web part, it should be run in a SharePoint Online environme
 
 ### Add the Collection Data control to the web part
 
-1. Locate the web part class in the **src\webparts\\\*\\*WebPart.ts** file.
+1. Locate the web part class in the **src\webparts\\\*\\\*WebPart.ts** file.
 
     > The actual path will depends on the name you gave the web part when running the Yeoman generator.
 
