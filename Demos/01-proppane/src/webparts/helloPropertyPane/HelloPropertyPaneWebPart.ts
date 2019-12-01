@@ -2,12 +2,12 @@
 // Licensed under the MIT license.
 
 import { Version } from '@microsoft/sp-core-library';
-import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import {
+  BaseClientSideWebPart,
   IPropertyPaneConfiguration,
   PropertyPaneTextField,
   PropertyPaneSlider
-} from '@microsoft/sp-property-pane';
+} from '@microsoft/sp-webpart-base';
 import { escape } from '@microsoft/sp-lodash-subset';
 
 import styles from './HelloPropertyPaneWebPart.module.scss';
@@ -53,6 +53,7 @@ export default class HelloPropertyPaneWebPart extends BaseClientSideWebPart<IHel
       ? 'Invalid continent entry; valid options are "Africa", "Antarctica", "Asia", "Australia", "Europe", "North America", and "South America"'
       : '';
   }
+  
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
@@ -75,7 +76,7 @@ export default class HelloPropertyPaneWebPart extends BaseClientSideWebPart<IHel
                 PropertyPaneSlider('numContinentsVisited', {
                   label: 'Number of continents I\'ve visited',
                   min: 1, max: 7, showValue: true,
-                })                    
+                })                
               ]
             }
           ]
