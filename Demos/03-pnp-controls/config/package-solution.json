@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "hello-world-client-side-solution",
-    "id": "0308e66a-4de2-4e6c-9ae2-8a38bde70572",
+    "name": "hello-pn-p-controls-client-side-solution",
+    "id": "4f9245ee-807d-4f97-b3dd-7498f1924cbb",
     "version": "1.0.0.0",
     "includeClientSideAssets": true,
     "isDomainIsolated": false
   },
   "paths": {
-    "zippedPackage": "solution/hello-world.sppkg"
+    "zippedPackage": "solution/hello-pn-p-controls.sppkg"
   }
 }

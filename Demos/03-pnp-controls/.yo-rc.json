@@ -2,9 +2,9 @@
   "@microsoft/generator-sharepoint": {
     "isCreatingSolution": true,
     "environment": "spo",
-    "version": "1.8.2",
-    "libraryName": "hello-world",
-    "libraryId": "0308e66a-4de2-4e6c-9ae2-8a38bde70572",
+    "version": "1.9.1",
+    "libraryName": "hello-pn-p-controls",
+    "libraryId": "4f9245ee-807d-4f97-b3dd-7498f1924cbb",
     "packageManager": "npm",
     "isDomainIsolated": false,
     "componentType": "webpart"
