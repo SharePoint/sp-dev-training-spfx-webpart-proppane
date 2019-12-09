@@ -8,7 +8,7 @@ In this demo, you will extend the property pane by creating your own custom fiel
 
     > NOTE: If you did not create the project in the previous demo, you will find a complete working version that you can start from in the **[Demos\01-proppane](../01-proppane)** folder.
 
-1. Within the project, locate the **src** folder and create a subfolder **controls**.
+1. Within the project, locate the **src** folder and create a subfolder named **controls**.
 1. Create a new folder **PropertyPaneContinentSelector** within the **controls** folder to contain the new drop down control.
 1. Custom property pane controls should be created using React & Fabric React to match the same user interface as the native controls. A custom React component is included in the **LabFiles** associated with this lab.
 
@@ -134,7 +134,7 @@ With the custom property pane control created, you can now replace the existing 
     } from '../../controls/PropertyPaneContinentSelector';
     ```
 
-1. Locate the `getPropertyPaneConfiguration()` method in the web part, then find the existing `PropertyPaneTextField` that's bound to the **myContinent** property. Comment this control out
+1. Locate the `getPropertyPaneConfiguration()` method in the web part, then find the existing `PropertyPaneTextField` that's bound to the **myContinent** property. Comment this control out.
 1. Add the following custom control to the property pane:
 
     ```ts

@@ -1,10 +1,10 @@
 # DEMO: Working with the web part property pane
 
-In this exercise, you will get hands-on experience in manipulating the property pane for a SPFx client-side web part in working with controls, groups and pages.
+In this exercise, you will get hands-on experience in manipulating the property pane for a SPFx client-side web part by working with controls, groups and pages.
 
 ## Create a new SPFx Solution & Web Part
 
-> NOTE: The instructions below assume you are using v1.8.2 of the SharePoint Framework Yeoman generator.
+> NOTE: The instructions below assume you are using v1.9.1 of the SharePoint Framework Yeoman generator.
 
 1. Open a command prompt and change to the folder where you want to create the project.
 1. Run the SharePoint Framework Yeoman generator by executing the following command:
@@ -25,7 +25,7 @@ In this exercise, you will get hands-on experience in manipulating the property 
     - **What is your Web part description?:** HelloPropertyPane description
     - **Which framework would you like to use?:** No JavaScript framework
 
-1. Verify everything is working. Execute the following command to build, start the local web server and test the web part in the local workbench:
+1. Verify everything is working. Execute the following command to build, start the local web server, and test the web part in the local workbench:
 
     ```shell
     gulp serve
@@ -57,7 +57,7 @@ With a working web part, the next step is to customize the property pane experie
     ```
 
 1. Update the web part rendering to display the values of these two properties:
-    1. within the `HelloPropertyPaneWebPart` class, locate the `render()` method.
+    1. Within the `HelloPropertyPaneWebPart` class, locate the `render()` method.
     1. Within the `render()` method, locate the following line in the HTML output:
 
         ```html
@@ -101,7 +101,7 @@ Now that the web part has two new custom properties, the next step is to extend 
 
 1. Add a new text control to the property pane, connected to the **myContinent** property:
     1. Open the file **src\webparts\helloPropertyPane\HelloPropertyPaneWebPart.ts**
-    1. Locate the method `getPropertyPaneConfiguration` & within it, locate the `groupFields` array.
+    1. Locate the method `getPropertyPaneConfiguration` and within it, locate the `groupFields` array.
     1. Add a comma after the existing `PropertyPaneTextField()` call.
     1. Add the following code after the comma:
 

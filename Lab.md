@@ -21,11 +21,11 @@ To complete this lab, you need the following:
 
 ## Exercise 1: Working with the web part property pane
 
-In this exercise, you will get hands-on experience in manipulating the property pane for a SPFx client-side web part in working with controls, groups and pages.
+In this exercise, you will get hands-on experience in manipulating the property pane for a SPFx client-side web part by working with controls, groups and pages.
 
 ### Create a new SPFx Solution & Web Part
 
-> NOTE: The instructions below assume you are using v1.8.2 of the SharePoint Framework Yeoman generator.
+> NOTE: The instructions below assume you are using v1.9.1 of the SharePoint Framework Yeoman generator.
 
 1. Open a command prompt and change to the folder where you want to create the project.
 1. Run the SharePoint Framework Yeoman generator by executing the following command:
@@ -46,7 +46,7 @@ In this exercise, you will get hands-on experience in manipulating the property 
     - **What is your Web part description?:** HelloPropertyPane description
     - **Which framework would you like to use?:** No JavaScript framework
 
-1. Verify everything is working. Execute the following command to build, start the local web server and test the web part in the local workbench:
+1. Verify everything is working. Execute the following command to build, start the local web server, and test the web part in the local workbench:
 
     ```shell
     gulp serve
@@ -78,7 +78,7 @@ With a working web part, the next step is to customize the property pane experie
     ```
 
 1. Update the web part rendering to display the values of these two properties:
-    1. within the `HelloPropertyPaneWebPart` class, locate the `render()` method.
+    1. Within the `HelloPropertyPaneWebPart` class, locate the `render()` method.
     1. Within the `render()` method, locate the following line in the HTML output:
 
         ```html
@@ -122,7 +122,7 @@ Now that the web part has two new custom properties, the next step is to extend 
 
 1. Add a new text control to the property pane, connected to the **myContinent** property:
     1. Open the file **src\webparts\helloPropertyPane\HelloPropertyPaneWebPart.ts**
-    1. Locate the method `getPropertyPaneConfiguration` & within it, locate the `groupFields` array.
+    1. Locate the method `getPropertyPaneConfiguration` and within it, locate the `groupFields` array.
     1. Add a comma after the existing `PropertyPaneTextField()` call.
     1. Add the following code after the comma:
 
@@ -208,7 +208,7 @@ In this exercise, you will extend the property pane by creating your own custom 
 
     > NOTE: If you did not create the project in the previous exercise, you will find a complete working version that you can start from in the **[Demos\01-proppane](/Demos/01-proppane)** folder.
 
-1. Within the project, locate the **src** folder and create a subfolder **controls**.
+1. Within the project, locate the **src** folder and create a subfolder named **controls**.
 1. Create a new folder **PropertyPaneContinentSelector** within the **controls** folder to contain the new drop down control.
 1. Custom property pane controls should be created using React & Fabric React to match the same user interface as the native controls. A custom React component is included in the **LabFiles** associated with this lab.
 
@@ -334,7 +334,7 @@ With the custom property pane control created, you can now replace the existing 
     } from '../../controls/PropertyPaneContinentSelector';
     ```
 
-1. Locate the `getPropertyPaneConfiguration()` method in the web part, then find the existing `PropertyPaneTextField` that's bound to the **myContinent** property. Comment this control out
+1. Locate the `getPropertyPaneConfiguration()` method in the web part, then find the existing `PropertyPaneTextField` that's bound to the **myContinent** property. Comment this control out.
 1. Add the following custom control to the property pane:
 
     ```ts
@@ -365,6 +365,8 @@ With the custom property pane control created, you can now replace the existing 
 ## Exercise 3: Leveraging the SPFx PnP Reusable Property Pane Controls
 
 In this exercise, you will learn how to leverage existing 3rd party controls from the the popular [PnP SPFx Reusable Property Pane Controls](https://sharepoint.github.io/sp-dev-fx-property-controls) project.
+
+> NOTE: The instructions below assume you are using v1.9.1 of the SharePoint Framework Yeoman generator.
 
 1. Create a new SPFx project that contains a single web part using no JavaScript framework for SharePoint Online with the Yeoman generator using the same steps from exercise 1. Allow the generator to scaffold the project and install all the necessary packages.
 1. Install the PnP SPFx Reusable Property Pane Controls:
