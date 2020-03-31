@@ -1,6 +1,6 @@
 # Microsoft SharePoint Framework Training Module - Working with the Web Part Property Pane
 
-This folder contains demos for the SharePoint Framework training module on Working with the Web Part Property Pane.
+This folder contains demos associated with the slide decks in this module.
 
 ## Demos
 

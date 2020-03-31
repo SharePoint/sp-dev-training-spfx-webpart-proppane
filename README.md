@@ -2,17 +2,29 @@
 
 This module will introduce you to leveraging the property pane for client-side web parts.
 
+> This module is also published as a Microsoft Learn module: [Enable SharePoint Framework Web Part Configuration with Property Panes](https://docs.microsoft.com/learn/modules/sharepoint-spfx-web-part-property-pane)
+
 ## Lab - Working with the Web Part Property Pane
 
-In this lab you work with the SharePoint Framework to extend client-side web parts using the property pane.
+The lab for this module is available in multiple units within the associated Microsoft Learn module. Use the following links to jump to the specific unit. Each Microsoft Learn unit represents a different lab exercise & demo in the presentation.
 
-- [Lab manual](./Lab.md)
+1. [Exercise - Work with the web part property pane](https://docs.microsoft.com/learn/modules/sharepoint-spfx-web-part-property-pane/3-exercise-web-part-property-pane)
+
+    In this exercise, you'll manipulate the property pane for a SharePoint Framework client-side web part with controls, groups, and pages.
+
+1. [Exercise - Build custom property pane fields](https://docs.microsoft.com/learn/modules/sharepoint-spfx-web-part-property-pane/5-exercise-build-custom-controls)
+
+    In this exercise, you'll extend the property pane by creating your own custom field control.
+
+1. [Exercise - Use the SPFx PnP reusable property pane controls](https://docs.microsoft.com/learn/modules/sharepoint-spfx-web-part-property-pane/7-exercise-pnp-controls)
+
+    In this exercise, you'll learn how to use existing third-party controls from the popular PnP SPFx reusable property pane controls project.
 
 ## Demos
 
-- [Working with the web part property pane](./Demos/01-proppane)
-- [Building custom property pane fields](./Demos/02-custom-fields)
-- [Leveraging the SPFx PnP Reusable Property Pane Controls](./Demos/03-pnp-controls)
+- [Work with the web part property pane](./Demos/01-proppane)
+- [Build custom property pane fields](./Demos/02-custom-fields)
+- [Use the SPFx PnP reusable property pane controls](./Demos/03-pnp-controls)
 
 ## Watch the Module - Video
 
@@ -20,23 +32,24 @@ This module has been recorded and is available in the SharePoint Development You
 
 ## Contributors
 
-|        Roles         |                                       Author(s)                                       |
-| -------------------- | ------------------------------------------------------------------------------------- |
-| Lab Manuals / Slides | Andrew Connell (Microsoft MVP, Voitanos) [@andrewconnell](//github.com/andrewconnell) |
-| QA                   | Rob Windsor (Microsoft MVP, PAIT Group) [@rob-windsor](//github.com/rob-windsor)      |
-| Sponsor / Support    | Vesa Juvonen (Microsoft) [@VesaJuvonen](//github.com/VesaJuvonen)                     |
+|        Roles         |                                                   Author(s)                                                    |
+| -------------------- | -------------------------------------------------------------------------------------------------------------- |
+| Lab Manuals / Slides | Andrew Connell (Microsoft MVP, [Voitanos](//github.com/voitanos)) [@andrewconnell](//github.com/andrewconnell) |
+| QA                   | Rob Windsor (Microsoft MVP, PAIT Group) [@rob-windsor](//github.com/rob-windsor)                               |
+| Sponsor / Support    | Vesa Juvonen (Microsoft) [@VesaJuvonen](//github.com/VesaJuvonen)                                              |
 
 ## Version history
 
-| Version |       Date        |                    Comments                    |
-| ------- | ----------------- | ---------------------------------------------- |
-| 1.6     | December 6, 2019  | 2020Q2 content refresh                         |
-| 1.5     | September 2, 2019 | 2020Q1 content refresh                         |
-| 1.4     | May 29, 2019      | 2019Q4 content refresh                         |
-| 1.3     | March 6, 2019     | FY2019Q3 Content refresh                       |
-| 1.2     | January 17, 2019  | Slide updates, added screencast link to readme |
-| 1.1     | December 12, 2018 | Rewritten to use latest guidance               |
-| 1.0     | ~February 2017    | Initial release                                |
+| Version |       Date        |                      Comments                      |
+| ------- | ----------------- | -------------------------------------------------- |
+| 1.7     | March 10, 2020    | FY2020Q3 content refresh & port module to MS Learn |
+| 1.6     | December 6, 2019  | FY2020Q2 content refresh                           |
+| 1.5     | September 2, 2019 | FY2020Q1 content refresh                           |
+| 1.4     | May 29, 2019      | FY2019Q4 content refresh                           |
+| 1.3     | March 6, 2019     | FY2019Q3 Content refresh                           |
+| 1.2     | January 17, 2019  | Slide updates, added screencast link to readme     |
+| 1.1     | December 12, 2018 | Rewritten to use latest guidance                   |
+| 1.0     | ~February 2017    | Initial release                                    |
 
 ## Disclaimer
 

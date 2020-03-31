@@ -1,9 +1,6 @@
 {
-  // Copyright (c) Microsoft Corporation. All rights reserved.
-  // Licensed under the MIT license.
-
   "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
-  "id": "1ab7a35f-34a6-410a-a9a1-d90bd297dc32",
+  "id": "57650a69-7bd6-4d06-87ee-11a26a097d8b",
   "alias": "HelloPropertyPaneWebPart",
   "componentType": "WebPart",
 

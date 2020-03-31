@@ -3,10 +3,10 @@
 
 import { Version } from '@microsoft/sp-core-library';
 import {
-  BaseClientSideWebPart,
   IPropertyPaneConfiguration,
   PropertyPaneTextField
-} from '@microsoft/sp-webpart-base';
+} from '@microsoft/sp-property-pane';
+import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { escape } from '@microsoft/sp-lodash-subset';
 
 import styles from './HelloPnPControlsWebPart.module.scss';
@@ -18,9 +18,9 @@ import {
   PrincipalType
 } from '@pnp/spfx-property-controls/lib/PropertyFieldPeoplePicker';
 
-import { 
-  PropertyFieldCollectionData, 
-  CustomCollectionFieldType 
+import {
+  PropertyFieldCollectionData,
+  CustomCollectionFieldType
 } from '@pnp/spfx-property-controls/lib/PropertyFieldCollectionData';
 
 export interface IHelloPnPControlsWebPartProps {
@@ -33,15 +33,15 @@ export default class HelloPnPControlsWebPart extends BaseClientSideWebPart<IHell
 
   public render(): void {
     this.domElement.innerHTML = `
-      <div class="${ styles.helloPnPControls }">
-        <div class="${ styles.container }">
-          <div class="${ styles.row }">
-            <div class="${ styles.column }">
-              <span class="${ styles.title }">Welcome to SharePoint!</span>
-              <p class="${ styles.subTitle }">Customize SharePoint experiences using Web Parts.</p>
-              <p class="${ styles.description }">${escape(this.properties.description)}</p>
-              <a href="https://aka.ms/spfx" class="${ styles.button }">
-                <span class="${ styles.label }">Learn more</span>
+      <div class="${ styles.helloPnPControls}">
+        <div class="${ styles.container}">
+          <div class="${ styles.row}">
+            <div class="${ styles.column}">
+              <span class="${ styles.title}">Welcome to SharePoint!</span>
+              <p class="${ styles.subTitle}">Customize SharePoint experiences using Web Parts.</p>
+              <p class="${ styles.description}">${escape(this.properties.description)}</p>
+              <a href="https://aka.ms/spfx" class="${ styles.button}">
+                <span class="${ styles.label}">Learn more</span>
               </a>
               <div class="selectedPeople"></div>
               <div class="expansionOptions"></div>
@@ -50,24 +50,24 @@ export default class HelloPnPControlsWebPart extends BaseClientSideWebPart<IHell
         </div>
       </div>`;
 
-      if (this.properties.people && this.properties.people.length > 0) {
-        let peopleList: string = '';
-        this.properties.people.forEach((person) => {
-          peopleList = peopleList + `<li>${ person.fullName } (${ person.email })</li>`;
-        });
-      
-        this.domElement.getElementsByClassName('selectedPeople')[0].innerHTML = `<ul>${ peopleList }</ul>`;
-      }      
+    if (this.properties.people && this.properties.people.length > 0) {
+      let peopleList: string = '';
+      this.properties.people.forEach((person) => {
+        peopleList = peopleList + `<li>${person.fullName} (${person.email})</li>`;
+      });
 
-      if (this.properties.expansionOptions && this.properties.expansionOptions.length > 0) {
-        let expansionOptions: string  = '';
-        this.properties.expansionOptions.forEach((option) => {
-          expansionOptions = expansionOptions + `<li>${ option['Region'] }: ${ option['Comment'] } </li>`;
-        });
-        if (expansionOptions.length > 0) {
-          this.domElement.getElementsByClassName('expansionOptions')[0].innerHTML = `<ul>${ expansionOptions }</ul>`;
-        }
+      this.domElement.getElementsByClassName('selectedPeople')[0].innerHTML = `<ul>${peopleList}</ul>`;
+    }
+
+    if (this.properties.expansionOptions && this.properties.expansionOptions.length > 0) {
+      let expansionOptions: string = '';
+      this.properties.expansionOptions.forEach((option) => {
+        expansionOptions = expansionOptions + `<li>${option['Region']}: ${option['Comment']} </li>`;
+      });
+      if (expansionOptions.length > 0) {
+        this.domElement.getElementsByClassName('expansionOptions')[0].innerHTML = `<ul>${expansionOptions}</ul>`;
       }
+    }
   }
 
   protected get dataVersion(): Version {
@@ -127,7 +127,7 @@ export default class HelloPnPControlsWebPart extends BaseClientSideWebPart<IHell
                       type: CustomCollectionFieldType.string
                     }
                   ]
-                })                             
+                })                
               ]
             }
           ]
