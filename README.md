@@ -10,15 +10,15 @@ The lab for this module is available in multiple units within the associated Mic
 
 1. [Exercise - Work with the web part property pane](https://docs.microsoft.com/learn/modules/sharepoint-spfx-web-part-property-pane/3-exercise-web-part-property-pane)
 
-    In this exercise, you'll manipulate the property pane for a SharePoint Framework client-side web part with controls, groups, and pages.
+   In this exercise, you'll manipulate the property pane for a SharePoint Framework client-side web part with controls, groups, and pages.
 
 1. [Exercise - Build custom property pane fields](https://docs.microsoft.com/learn/modules/sharepoint-spfx-web-part-property-pane/5-exercise-build-custom-controls)
 
-    In this exercise, you'll extend the property pane by creating your own custom field control.
+   In this exercise, you'll extend the property pane by creating your own custom field control.
 
 1. [Exercise - Use the SPFx PnP reusable property pane controls](https://docs.microsoft.com/learn/modules/sharepoint-spfx-web-part-property-pane/7-exercise-pnp-controls)
 
-    In this exercise, you'll learn how to use existing third-party controls from the popular PnP SPFx reusable property pane controls project.
+   In this exercise, you'll learn how to use existing third-party controls from the popular PnP SPFx reusable property pane controls project.
 
 ## Demos
 
@@ -32,7 +32,7 @@ This module has been recorded and is available in the SharePoint Development You
 
 ## Contributors
 
-|        Roles         |                                                   Author(s)                                                    |
+| Roles                | Author(s)                                                                                                      |
 | -------------------- | -------------------------------------------------------------------------------------------------------------- |
 | Lab Manuals / Slides | Andrew Connell (Microsoft MVP, [Voitanos](//github.com/voitanos)) [@andrewconnell](//github.com/andrewconnell) |
 | QA                   | Rob Windsor (Microsoft MVP, PAIT Group) [@rob-windsor](//github.com/rob-windsor)                               |
@@ -40,8 +40,9 @@ This module has been recorded and is available in the SharePoint Development You
 
 ## Version history
 
-| Version |       Date        |                      Comments                      |
+| Version | Date              | Comments                                           |
 | ------- | ----------------- | -------------------------------------------------- |
+| 1.8     | August 31, 2020   | FY2021Q1 content refresh                           |
 | 1.7     | March 10, 2020    | FY2020Q3 content refresh & port module to MS Learn |
 | 1.6     | December 6, 2019  | FY2020Q2 content refresh                           |
 | 1.5     | September 2, 2019 | FY2020Q1 content refresh                           |

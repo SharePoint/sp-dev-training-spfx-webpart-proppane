@@ -10,13 +10,13 @@ import {
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { escape } from '@microsoft/sp-lodash-subset';
 
-import styles from './HelloPropertyPaneWebPart.module.scss';
-import * as strings from 'HelloPropertyPaneWebPartStrings';
-
 import {
   PropertyPaneContinentSelector,
   IPropertyPaneContinentSelectorProps
 } from '../../controls/PropertyPaneContinentSelector';
+
+import styles from './HelloPropertyPaneWebPart.module.scss';
+import * as strings from 'HelloPropertyPaneWebPartStrings';
 
 export interface IHelloPropertyPaneWebPartProps {
   description: string;
@@ -63,7 +63,7 @@ export default class HelloPropertyPaneWebPart extends BaseClientSideWebPart<IHel
     const oldValue: any = this.properties[propertyPath];
     this.properties[propertyPath] = newValue;
     this.render();
-  }  
+  }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
@@ -88,7 +88,7 @@ export default class HelloPropertyPaneWebPart extends BaseClientSideWebPart<IHel
                   disabled: false,
                   selectedKey: this.properties.myContinent,
                   onPropertyChange: this.onContinentSelectionChange.bind(this),
-                }),                
+                }),
                 PropertyPaneSlider('numContinentsVisited', {
                   label: 'Number of continents I\'ve visited',
                   min: 1, max: 7, showValue: true,
