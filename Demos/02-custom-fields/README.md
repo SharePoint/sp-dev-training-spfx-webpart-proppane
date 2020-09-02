@@ -1,6 +1,6 @@
 # DEMO: Building custom property pane fields
 
-This completed project is the result of the lab exercise **Building custom property pane fields** that is referenced in the [README](../../) in this repo.
+This completed project is the result of the lab exercise **Building custom property pane fields** that is referenced in the [README](../../README.md) in this repo.
 
 ## Prerequisites
 

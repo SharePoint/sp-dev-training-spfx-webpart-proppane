@@ -39,10 +39,10 @@ export default class ContinentSelector extends React.Component<IContinentSelecto
     return (
       <div>
         <Dropdown label={this.props.label}
-                  disabled={this.props.disabled}
-                  selectedKey={this.selectedKey}
-                  options={this.state.options}
-                  onChanged={this.onChanged.bind(this)} />
+          disabled={this.props.disabled}
+          selectedKey={this.selectedKey}
+          options={this.state.options}
+          onChanged={this.onChanged.bind(this)} />
       </div>
     );
   }
