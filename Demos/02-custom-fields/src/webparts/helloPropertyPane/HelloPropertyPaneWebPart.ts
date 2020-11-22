@@ -10,13 +10,13 @@ import {
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { escape } from '@microsoft/sp-lodash-subset';
 
+import styles from './HelloPropertyPaneWebPart.module.scss';
+import * as strings from 'HelloPropertyPaneWebPartStrings';
+
 import {
   PropertyPaneContinentSelector,
   IPropertyPaneContinentSelectorProps
 } from '../../controls/PropertyPaneContinentSelector';
-
-import styles from './HelloPropertyPaneWebPart.module.scss';
-import * as strings from 'HelloPropertyPaneWebPartStrings';
 
 export interface IHelloPropertyPaneWebPartProps {
   description: string;
@@ -36,7 +36,7 @@ export default class HelloPropertyPaneWebPart extends BaseClientSideWebPart<IHel
               <p class="${ styles.subTitle}">Customize SharePoint experiences using Web Parts.</p>
               <p class="${ styles.description}">${escape(this.properties.description)}</p>
               <p class="${ styles.description}">Continent where I reside: ${escape(this.properties.myContinent)}</p>
-              <p class="${ styles.description}">Number of continents I've visited: ${this.properties.numContinentsVisited}</p>              
+              <p class="${ styles.description}">Number of continents I've visited: ${this.properties.numContinentsVisited}</p>
               <a href="https://aka.ms/spfx" class="${ styles.button}">
                 <span class="${ styles.label}">Learn more</span>
               </a>
@@ -79,10 +79,6 @@ export default class HelloPropertyPaneWebPart extends BaseClientSideWebPart<IHel
                 PropertyPaneTextField('description', {
                   label: strings.DescriptionFieldLabel
                 }),
-                // PropertyPaneTextField('myContinent', {
-                //   label: 'Continent where I currently reside',
-                //   onGetErrorMessage: this.validateContinents.bind(this)
-                // }),
                 new PropertyPaneContinentSelector('myContinent', <IPropertyPaneContinentSelectorProps>{
                   label: 'Continent where I currently reside',
                   disabled: false,
