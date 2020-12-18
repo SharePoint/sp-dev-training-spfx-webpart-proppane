@@ -1,6 +1,6 @@
-# DEMO: Leveraging the SPFx PnP Reusable Property Pane Controls
+# DEMO: Use the SPFx PnP reusable property pane controls
 
-This completed project is the result of the lab exercise **Leveraging the SPFx PnP Reusable Property Pane Controls** that is referenced in the [README](../../README.md) in this repo.
+This completed project is the result of the lab exercise **Use the SPFx PnP reusable property pane controls** that is referenced in the [README](../../README.md) in this repo.
 
 ## Prerequisites
 

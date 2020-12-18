@@ -4,9 +4,9 @@ This folder contains demos associated with the slide decks in this module.
 
 ## Demos
 
-- [Working with the web part property pane](./01-proppane)
-- [Building custom property pane fields](./02-custom-fields)
-- [Leveraging the SPFx PnP Reusable Property Pane Controls](./03-pnp-controls)
+- [Work with the web part property pane](./01-proppane)
+- [Build custom property pane fields](./02-custom-fields)
+- [Use the SPFx PnP reusable property pane controls](./03-pnp-controls)
 
 ## Running demonstrations
 

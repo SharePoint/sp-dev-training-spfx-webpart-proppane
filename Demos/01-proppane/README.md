@@ -1,6 +1,6 @@
-# DEMO: Working with the web part property pane
+# DEMO: Work with the web part property pane
 
-This completed project is the result of the lab exercise **Working with the web part property pane** that is referenced in the [README](../../README.md) in this repo.
+This completed project is the result of the lab exercise **Work with the web part property pane** that is referenced in the [README](../../README.md) in this repo.
 
 ## Prerequisites
 

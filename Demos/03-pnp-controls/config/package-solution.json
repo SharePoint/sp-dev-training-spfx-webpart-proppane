@@ -2,7 +2,7 @@
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
     "name": "hello-pn-p-controls-client-side-solution",
-    "id": "1ac40786-4879-4931-9832-faae7ba15c26",
+    "id": "16d94003-aa6c-42ef-998e-ecbfefbed806",
     "version": "1.0.0.0",
     "includeClientSideAssets": true,
     "isDomainIsolated": false,
