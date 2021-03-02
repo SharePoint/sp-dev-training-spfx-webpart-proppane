@@ -4,7 +4,7 @@
     "environment": "spo",
     "version": "1.11.0",
     "libraryName": "hello-property-pane",
-    "libraryId": "3d474afd-18a2-44fa-95ba-f4b9f5bb4101",
+    "libraryId": "93b6d1d1-b829-41ce-8893-1ae1db2b7480",
     "packageManager": "npm",
     "isDomainIsolated": false,
     "componentType": "webpart"
