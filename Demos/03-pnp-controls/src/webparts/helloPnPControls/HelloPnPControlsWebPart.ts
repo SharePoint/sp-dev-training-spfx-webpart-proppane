@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT license.
+
 import { Version } from '@microsoft/sp-core-library';
 import {
   IPropertyPaneConfiguration,
@@ -91,7 +94,7 @@ export default class HelloPnPControlsWebPart extends BaseClientSideWebPart<IHell
                   allowDuplicate: false,
                   principalType: [PrincipalType.Users, PrincipalType.SharePoint, PrincipalType.Security],
                   onPropertyChange: this.onPropertyPaneFieldChanged,
-                  context: this.context,
+                  context: this.context as any,
                   properties: this.properties,
                   onGetErrorMessage: null,
                   deferredValidationTime: 0,
