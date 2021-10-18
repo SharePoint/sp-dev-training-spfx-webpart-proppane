@@ -4,7 +4,7 @@
     "environment": "spo",
     "version": "1.12.1",
     "libraryName": "hello-pn-p-controls",
-    "libraryId": "fee90c7b-cb3c-4b18-a506-2f75b8dc34dd",
+    "libraryId": "f855dcaf-9890-423c-b2c1-523b640890ef",
     "packageManager": "npm",
     "isDomainIsolated": false,
     "componentType": "webpart"

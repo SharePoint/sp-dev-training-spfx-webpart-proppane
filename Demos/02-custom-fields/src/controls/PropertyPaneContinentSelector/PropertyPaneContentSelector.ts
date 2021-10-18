@@ -15,6 +15,7 @@ import {
   IPropertyPaneContinentSelectorInternalProps,
 } from './';
 
+
 export class PropertyPaneContinentSelector implements IPropertyPaneField<IPropertyPaneContinentSelectorProps> {
   public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
   public properties: IPropertyPaneContinentSelectorInternalProps;
