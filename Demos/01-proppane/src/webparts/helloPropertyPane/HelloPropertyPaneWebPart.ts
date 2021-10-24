@@ -23,17 +23,17 @@ export default class HelloPropertyPaneWebPart extends BaseClientSideWebPart<IHel
 
   public render(): void {
     this.domElement.innerHTML = `
-      <div class="${ styles.helloPropertyPane }">
-        <div class="${ styles.container }">
-          <div class="${ styles.row }">
-            <div class="${ styles.column }">
-              <span class="${ styles.title }">Welcome to SharePoint!</span>
-              <p class="${ styles.subTitle }">Customize SharePoint experiences using Web Parts.</p>
-              <p class="${ styles.description }">Continent where I reside: ${escape(this.properties.description)}</p>
+      <div class="${styles.helloPropertyPane}">
+        <div class="${styles.container}">
+          <div class="${styles.row}">
+            <div class="${styles.column}">
+              <span class="${styles.title}">Welcome to SharePoint!</span>
+              <p class="${styles.subTitle}">Customize SharePoint experiences using Web Parts.</p>
+              <p class="${styles.description}">${escape(this.properties.description)}</p>
               <p class="${ styles.description }">Continent where I reside: ${escape(this.properties.myContinent)}</p>
-              <p class="${ styles.description }">Number of continents I've visited: ${this.properties.numContinentsVisited}</p>
-              <a href="https://aka.ms/spfx" class="${ styles.button }">
-                <span class="${ styles.label }">Learn more</span>
+              <p class="${ styles.description }">Number of continents I've visited: ${this.properties.numContinentsVisited}</p>              
+              <a href="https://aka.ms/spfx" class="${styles.button}">
+                <span class="${styles.label}">Learn more</span>
               </a>
             </div>
           </div>
@@ -52,7 +52,7 @@ export default class HelloPropertyPaneWebPart extends BaseClientSideWebPart<IHel
     return (validContinentOptions.indexOf(inputToValidate) === -1)
       ? 'Invalid continent entry; valid options are "Africa", "Antarctica", "Asia", "Australia", "Europe", "North America", and "South America"'
       : '';
-  }
+  }  
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
@@ -75,7 +75,7 @@ export default class HelloPropertyPaneWebPart extends BaseClientSideWebPart<IHel
                 PropertyPaneSlider('numContinentsVisited', {
                   label: 'Number of continents I\'ve visited',
                   min: 1, max: 7, showValue: true,
-                })
+                })                                
               ]
             }
           ]

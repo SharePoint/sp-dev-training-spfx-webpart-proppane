@@ -60,12 +60,12 @@ export default class HelloPnPControlsWebPart extends BaseClientSideWebPart<IHell
     }
 
     if (this.properties.expansionOptions && this.properties.expansionOptions.length > 0) {
-      let expansionOptions: string  = '';
+      let expansionOptions: string = '';
       this.properties.expansionOptions.forEach((option) => {
-        expansionOptions = expansionOptions + `<li>${ option['Region'] }: ${ option['Comment'] } </li>`;
+        expansionOptions = expansionOptions + `<li>${option['Region']}: ${option['Comment']} </li>`;
       });
       if (expansionOptions.length > 0) {
-        this.domElement.getElementsByClassName('expansionOptions')[0].innerHTML = `<ul>${ expansionOptions }</ul>`;
+        this.domElement.getElementsByClassName('expansionOptions')[0].innerHTML = `<ul>${expansionOptions}</ul>`;
       }
     }
   }

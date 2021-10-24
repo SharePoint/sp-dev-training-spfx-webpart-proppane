@@ -15,7 +15,6 @@ import {
   IPropertyPaneContinentSelectorInternalProps,
 } from './';
 
-
 export class PropertyPaneContinentSelector implements IPropertyPaneField<IPropertyPaneContinentSelectorProps> {
   public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
   public properties: IPropertyPaneContinentSelectorInternalProps;
@@ -56,4 +55,5 @@ export class PropertyPaneContinentSelector implements IPropertyPaneField<IProper
   private onChanged(option: IDropdownOption, index?: number): void {
     this.properties.onPropertyChange(this.targetProperty, option.key);
   }
+
 }
