@@ -1,6 +1,6 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
-  "id": "9f349652-5622-40e3-b2f8-1b600e5e473a",
+  "id": "d3cf4ff7-1271-40eb-baed-9a54fd8062e1",
   "alias": "HelloPropertyPaneWebPart",
   "componentType": "WebPart",
 
@@ -12,7 +12,8 @@
   // Components that allow authors to embed arbitrary script code should set this to true.
   // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
   "requiresCustomScript": false,
-  "supportedHosts": ["SharePointWebPart"],
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
 
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
@@ -23,7 +24,7 @@
     "properties": {
       "description": "HelloPropertyPane",
       "myContinent": "North America",
-      "numContinentsVisited": 4
+      "numContinentsVisited": 4      
     }
   }]
 }
