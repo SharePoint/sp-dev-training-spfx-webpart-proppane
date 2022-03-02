@@ -55,5 +55,4 @@ export class PropertyPaneContinentSelector implements IPropertyPaneField<IProper
   private onChanged(option: IDropdownOption, index?: number): void {
     this.properties.onPropertyChange(this.targetProperty, option.key);
   }
-
 }
