@@ -1,6 +1,6 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
-  "id": "d3cf4ff7-1271-40eb-baed-9a54fd8062e1",
+  "id": "e4ec4a14-f630-4c5c-91f7-938cef6930e1",
   "alias": "HelloPropertyPaneWebPart",
   "componentType": "WebPart",
 
@@ -24,7 +24,7 @@
     "properties": {
       "description": "HelloPropertyPane",
       "myContinent": "North America",
-      "numContinentsVisited": 4      
+      "numContinentsVisited": 4
     }
   }]
 }

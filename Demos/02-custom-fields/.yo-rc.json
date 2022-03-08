@@ -3,9 +3,9 @@
     "plusBeta": false,
     "isCreatingSolution": true,
     "environment": "spo",
-    "version": "1.13.0",
+    "version": "1.13.1",
     "libraryName": "hello-property-pane",
-    "libraryId": "719d330a-1fe9-448d-aa1c-e1f427f7ec0f",
+    "libraryId": "6abd0498-917f-4bf3-ba42-5482450e4f91",
     "packageManager": "npm",
     "isDomainIsolated": false,
     "componentType": "webpart"
