@@ -1,6 +1,6 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
-  "id": "dfa44ce4-4c0b-4b3e-a442-342ba9b94dce",
+  "id": "b20e9226-6766-4394-92c8-4350d5909261",
   "alias": "HelloPropertyPaneWebPart",
   "componentType": "WebPart",
 
@@ -16,8 +16,8 @@
   "supportsThemeVariants": true,
 
   "preconfiguredEntries": [{
-    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
-    "group": { "default": "Other" },
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Advanced
+    "group": { "default": "Advanced" },
     "title": { "default": "HelloPropertyPane" },
     "description": { "default": "HelloPropertyPane description" },
     "officeFabricIconFontName": "Page",

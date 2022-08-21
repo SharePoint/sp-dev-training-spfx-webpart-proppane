@@ -1,6 +1,6 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
-  "id": "56dc14c0-fec2-40da-b70d-14cf24f12fdd",
+  "id": "e05c589f-3358-4e98-91d7-c1a46825a442",
   "alias": "HelloPnPControlsWebPart",
   "componentType": "WebPart",
 
@@ -16,8 +16,8 @@
   "supportsThemeVariants": true,
 
   "preconfiguredEntries": [{
-    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
-    "group": { "default": "Other" },
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Advanced
+    "group": { "default": "Advanced" },
     "title": { "default": "HelloPnPControls" },
     "description": { "default": "HelloPnPControls description" },
     "officeFabricIconFontName": "Page",

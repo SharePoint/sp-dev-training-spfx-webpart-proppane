@@ -9,7 +9,7 @@ import {
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
-import { escape } from '@microsoft/sp-lodash-subset';
+import { escape, update } from '@microsoft/sp-lodash-subset';
 
 import styles from './HelloPropertyPaneWebPart.module.scss';
 import * as strings from 'HelloPropertyPaneWebPartStrings';
@@ -29,12 +29,6 @@ export default class HelloPropertyPaneWebPart extends BaseClientSideWebPart<IHel
 
   private _isDarkTheme: boolean = false;
   private _environmentMessage: string = '';
-
-  protected onInit(): Promise<void> {
-    this._environmentMessage = this._getEnvironmentMessage();
-
-    return super.onInit();
-  }
 
   public render(): void {
     this.domElement.innerHTML = `
@@ -66,6 +60,14 @@ export default class HelloPropertyPaneWebPart extends BaseClientSideWebPart<IHel
     </section>`;
   }
 
+  protected onInit(): Promise<void> {
+    this._environmentMessage = this._getEnvironmentMessage();
+
+    return super.onInit();
+  }
+
+
+
   private _getEnvironmentMessage(): string {
     if (!!this.context.sdks.microsoftTeams) { // running in Teams
       return this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentTeams : strings.AppTeamsTabEnvironment;
@@ -83,9 +85,12 @@ export default class HelloPropertyPaneWebPart extends BaseClientSideWebPart<IHel
     const {
       semanticColors
     } = currentTheme;
-    this.domElement.style.setProperty('--bodyText', semanticColors.bodyText);
-    this.domElement.style.setProperty('--link', semanticColors.link);
-    this.domElement.style.setProperty('--linkHovered', semanticColors.linkHovered);
+
+    if (semanticColors) {
+      this.domElement.style.setProperty('--bodyText', semanticColors.bodyText || null);
+      this.domElement.style.setProperty('--link', semanticColors.link || null);
+      this.domElement.style.setProperty('--linkHovered', semanticColors.linkHovered || null);
+    }
 
   }
 
@@ -102,11 +107,12 @@ export default class HelloPropertyPaneWebPart extends BaseClientSideWebPart<IHel
       : '';
   }
 
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   private onContinentSelectionChange(propertyPath: string, newValue: any): void {
-    const oldValue: any = this.properties[propertyPath];
-    this.properties[propertyPath] = newValue;
+    update(this.properties, propertyPath, (): any => { return newValue });
     this.render();
   }
+  /* eslint-enable @typescript-eslint/no-explicit-any */
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {

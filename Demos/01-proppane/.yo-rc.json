@@ -2,9 +2,9 @@
   "@microsoft/generator-sharepoint": {
     "plusBeta": false,
     "isCreatingSolution": true,
-    "version": "1.14.0",
+    "version": "1.15.2",
     "libraryName": "hello-property-pane",
-    "libraryId": "16afa68e-0300-4dbc-943a-a483c84d9033",
+    "libraryId": "6ccc686a-50ee-4502-93c1-e59c0e81c732",
     "environment": "spo",
     "packageManager": "npm",
     "solutionName": "HelloPropertyPane",
