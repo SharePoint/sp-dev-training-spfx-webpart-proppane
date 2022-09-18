@@ -23,7 +23,7 @@ export default class ContinentSelector extends React.Component<IContinentSelecto
   }
 
   public loadOptions(): void {
-    let continents: IDropdownOption[] = [
+    const continents: IDropdownOption[] = [
       { "key": "Africa", "text": "Africa" },
       { "key": "Antarctica", "text": "Antarctica" },
       { "key": "Asia", "text": "Asia" },

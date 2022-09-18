@@ -27,19 +27,13 @@ import {
 export interface IHelloPnPControlsWebPartProps {
   description: string;
   people: IPropertyFieldGroupOrPerson[];
-  expansionOptions: any[];
+  expansionOptions: any[]; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 export default class HelloPnPControlsWebPart extends BaseClientSideWebPart<IHelloPnPControlsWebPartProps> {
 
   private _isDarkTheme: boolean = false;
   private _environmentMessage: string = '';
-
-  protected onInit(): Promise<void> {
-    this._environmentMessage = this._getEnvironmentMessage();
-
-    return super.onInit();
-  }
 
   public render(): void {
     this.domElement.innerHTML = `
@@ -66,13 +60,21 @@ export default class HelloPnPControlsWebPart extends BaseClientSideWebPart<IHell
     if (this.properties.expansionOptions && this.properties.expansionOptions.length > 0) {
       let expansionOptions: string = '';
       this.properties.expansionOptions.forEach((option) => {
-        expansionOptions = expansionOptions + `<li>${option['Region']}: ${option['Comment']} </li>`;
+        expansionOptions = expansionOptions + `<li>${option.Region}: ${option.Comment} </li>`;
       });
       if (expansionOptions.length > 0) {
         this.domElement.getElementsByClassName('expansionOptions')[0].innerHTML = `<ul>${expansionOptions}</ul>`;
       }
     }
   }
+
+  protected onInit(): Promise<void> {
+    this._environmentMessage = this._getEnvironmentMessage();
+
+    return super.onInit();
+  }
+
+
 
   private _getEnvironmentMessage(): string {
     if (!!this.context.sdks.microsoftTeams) { // running in Teams
@@ -91,9 +93,12 @@ export default class HelloPnPControlsWebPart extends BaseClientSideWebPart<IHell
     const {
       semanticColors
     } = currentTheme;
-    this.domElement.style.setProperty('--bodyText', semanticColors.bodyText);
-    this.domElement.style.setProperty('--link', semanticColors.link);
-    this.domElement.style.setProperty('--linkHovered', semanticColors.linkHovered);
+
+    if (semanticColors) {
+      this.domElement.style.setProperty('--bodyText', semanticColors.bodyText || null);
+      this.domElement.style.setProperty('--link', semanticColors.link || null);
+      this.domElement.style.setProperty('--linkHovered', semanticColors.linkHovered || null);
+    }
 
   }
 
@@ -121,7 +126,7 @@ export default class HelloPnPControlsWebPart extends BaseClientSideWebPart<IHell
                   allowDuplicate: false,
                   principalType: [PrincipalType.Users, PrincipalType.SharePoint, PrincipalType.Security],
                   onPropertyChange: this.onPropertyPaneFieldChanged,
-                  context: this.context as any,
+                  context: this.context as any, // eslint-disable-line @typescript-eslint/no-explicit-any
                   properties: this.properties,
                   onGetErrorMessage: null,
                   deferredValidationTime: 0,

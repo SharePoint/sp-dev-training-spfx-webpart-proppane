@@ -27,7 +27,8 @@ export class PropertyPaneContinentSelector implements IPropertyPaneField<IProper
       disabled: properties.disabled,
       selectedKey: properties.selectedKey,
       onPropertyChange: properties.onPropertyChange,
-      onRender: this.onRender.bind(this)
+      onRender: this.onRender.bind(this),
+      onDispose: this.onDispose.bind(this)
     };
   }
 
@@ -35,6 +36,10 @@ export class PropertyPaneContinentSelector implements IPropertyPaneField<IProper
     if (!this.element) {
       return;
     }
+  }
+
+  private onDispose(element: HTMLElement): void {
+    ReactDom.unmountComponentAtNode(element);
   }
 
   private onRender(element: HTMLElement): void {
