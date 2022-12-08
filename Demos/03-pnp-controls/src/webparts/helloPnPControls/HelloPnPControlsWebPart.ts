@@ -10,9 +10,6 @@ import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
 import { escape } from '@microsoft/sp-lodash-subset';
 
-import styles from './HelloPnPControlsWebPart.module.scss';
-import * as strings from 'HelloPnPControlsWebPartStrings';
-
 import {
   IPropertyFieldGroupOrPerson,
   PropertyFieldPeoplePicker,
@@ -23,6 +20,9 @@ import {
   PropertyFieldCollectionData,
   CustomCollectionFieldType
 } from '@pnp/spfx-property-controls/lib/PropertyFieldCollectionData';
+
+import styles from './HelloPnPControlsWebPart.module.scss';
+import * as strings from 'HelloPnPControlsWebPartStrings';
 
 export interface IHelloPnPControlsWebPartProps {
   description: string;

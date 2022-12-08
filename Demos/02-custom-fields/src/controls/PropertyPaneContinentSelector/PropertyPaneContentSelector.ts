@@ -38,10 +38,6 @@ export class PropertyPaneContinentSelector implements IPropertyPaneField<IProper
     }
   }
 
-  private onDispose(element: HTMLElement): void {
-    ReactDom.unmountComponentAtNode(element);
-  }
-
   private onRender(element: HTMLElement): void {
     if (!this.element) {
       this.element = element;
@@ -55,6 +51,10 @@ export class PropertyPaneContinentSelector implements IPropertyPaneField<IProper
       stateKey: new Date().toString() // hack to allow for externally triggered re-rendering
     });
     ReactDom.render(reactElement, element);
+  }
+
+  private onDispose(element: HTMLElement): void {
+    ReactDom.unmountComponentAtNode(element);
   }
 
   private onChanged(option: IDropdownOption, index?: number): void {
