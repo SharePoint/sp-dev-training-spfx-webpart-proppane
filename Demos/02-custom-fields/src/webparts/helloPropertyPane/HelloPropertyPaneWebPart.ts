@@ -1,11 +1,7 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-
 import { Version } from '@microsoft/sp-core-library';
 import {
   IPropertyPaneConfiguration,
-  PropertyPaneTextField,
-  PropertyPaneSlider
+  PropertyPaneTextField
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
@@ -61,19 +57,37 @@ export default class HelloPropertyPaneWebPart extends BaseClientSideWebPart<IHel
   }
 
   protected onInit(): Promise<void> {
-    this._environmentMessage = this._getEnvironmentMessage();
-
-    return super.onInit();
+    return this._getEnvironmentMessage().then(message => {
+      this._environmentMessage = message;
+    });
   }
 
 
 
-  private _getEnvironmentMessage(): string {
-    if (!!this.context.sdks.microsoftTeams) { // running in Teams
-      return this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentTeams : strings.AppTeamsTabEnvironment;
+  private _getEnvironmentMessage(): Promise<string> {
+    if (!!this.context.sdks.microsoftTeams) { // running in Teams, office.com or Outlook
+      return this.context.sdks.microsoftTeams.teamsJs.app.getContext()
+        .then(context => {
+          let environmentMessage: string = '';
+          switch (context.app.host.name) {
+            case 'Office': // running in Office
+              environmentMessage = this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentOffice : strings.AppOfficeEnvironment;
+              break;
+            case 'Outlook': // running in Outlook
+              environmentMessage = this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentOutlook : strings.AppOutlookEnvironment;
+              break;
+            case 'Teams': // running in Teams
+              environmentMessage = this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentTeams : strings.AppTeamsTabEnvironment;
+              break;
+            default:
+              throw new Error('Unknown host');
+          }
+
+          return environmentMessage;
+        });
     }
 
-    return this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentSharePoint : strings.AppSharePointEnvironment;
+    return Promise.resolve(this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentSharePoint : strings.AppSharePointEnvironment);
   }
 
   protected onThemeChanged(currentTheme: IReadonlyTheme | undefined): void {
@@ -97,22 +111,6 @@ export default class HelloPropertyPaneWebPart extends BaseClientSideWebPart<IHel
   protected get dataVersion(): Version {
     return Version.parse('1.0');
   }
-
-  private validateContinents(textboxValue: string): string {
-    const validContinentOptions: string[] = ['africa', 'antarctica', 'asia', 'australia', 'europe', 'north america', 'south america'];
-    const inputToValidate: string = textboxValue.toLowerCase();
-
-    return (validContinentOptions.indexOf(inputToValidate) === -1)
-      ? 'Invalid continent entry; valid options are "Africa", "Antarctica", "Asia", "Australia", "Europe", "North America", and "South America"'
-      : '';
-  }
-
-  /* eslint-disable @typescript-eslint/no-explicit-any */
-  private onContinentSelectionChange(propertyPath: string, newValue: any): void {
-    update(this.properties, propertyPath, (): any => { return newValue });
-    this.render();
-  }
-  /* eslint-enable @typescript-eslint/no-explicit-any */
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
@@ -149,4 +147,21 @@ export default class HelloPropertyPaneWebPart extends BaseClientSideWebPart<IHel
       ]
     };
   }
+
+  /* eslint-disable @typescript-eslint/no-explicit-any */
+  private onContinentSelectionChange(propertyPath: string, newValue: any): void {
+    update(this.properties, propertyPath, (): any => { return newValue });
+    this.render();
+  }
+  /* eslint-enable @typescript-eslint/no-explicit-any */
+
+  private validateContinents(textboxValue: string): string {
+    const validContinentOptions: string[] = ['africa', 'antarctica', 'asia', 'australia', 'europe', 'north america', 'south america'];
+    const inputToValidate: string = textboxValue.toLowerCase();
+
+    return (validContinentOptions.indexOf(inputToValidate) === -1)
+      ? 'Invalid continent entry; valid options are "Africa", "Antarctica", "Asia", "Australia", "Europe", "North America", and "South America"'
+      : '';
+  }
+
 }

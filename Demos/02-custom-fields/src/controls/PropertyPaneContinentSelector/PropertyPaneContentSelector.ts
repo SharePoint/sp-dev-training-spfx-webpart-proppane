@@ -1,6 +1,3 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import {
@@ -60,4 +57,5 @@ export class PropertyPaneContinentSelector implements IPropertyPaneField<IProper
   private onChanged(option: IDropdownOption, index?: number): void {
     this.properties.onPropertyChange(this.targetProperty, option.key);
   }
+
 }

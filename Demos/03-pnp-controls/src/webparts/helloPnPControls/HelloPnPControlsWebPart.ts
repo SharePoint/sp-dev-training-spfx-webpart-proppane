@@ -1,6 +1,3 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-
 import { Version } from '@microsoft/sp-core-library';
 import {
   IPropertyPaneConfiguration,
@@ -9,6 +6,9 @@ import {
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
 import { escape } from '@microsoft/sp-lodash-subset';
+
+import styles from './HelloPnPControlsWebPart.module.scss';
+import * as strings from 'HelloPnPControlsWebPartStrings';
 
 import {
   IPropertyFieldGroupOrPerson,
@@ -20,9 +20,6 @@ import {
   PropertyFieldCollectionData,
   CustomCollectionFieldType
 } from '@pnp/spfx-property-controls/lib/PropertyFieldCollectionData';
-
-import styles from './HelloPnPControlsWebPart.module.scss';
-import * as strings from 'HelloPnPControlsWebPartStrings';
 
 export interface IHelloPnPControlsWebPartProps {
   description: string;
@@ -44,8 +41,10 @@ export default class HelloPnPControlsWebPart extends BaseClientSideWebPart<IHell
         <div>${this._environmentMessage}</div>
         <div>Web part property value: <strong>${escape(this.properties.description)}</strong></div>
       </div>
-      <div class="selectedPeople"></div>
-      <div class="expansionOptions"></div>
+      <div>
+        <div class="selectedPeople"></div>
+        <div class="expansionOptions"></div>
+      </div>
     </section>`;
 
     if (this.properties.people && this.properties.people.length > 0) {
@@ -58,30 +57,49 @@ export default class HelloPnPControlsWebPart extends BaseClientSideWebPart<IHell
     }
 
     if (this.properties.expansionOptions && this.properties.expansionOptions.length > 0) {
-      let expansionOptions: string = '';
+      let expansionOptions: string  = '';
       this.properties.expansionOptions.forEach((option) => {
-        expansionOptions = expansionOptions + `<li>${option.Region}: ${option.Comment} </li>`;
+        expansionOptions = expansionOptions + `<li>${ option.Region }: ${ option.Comment } </li>`;
       });
       if (expansionOptions.length > 0) {
-        this.domElement.getElementsByClassName('expansionOptions')[0].innerHTML = `<ul>${expansionOptions}</ul>`;
+        this.domElement.getElementsByClassName('expansionOptions')[0].innerHTML = `<ul>${ expansionOptions }</ul>`;
       }
     }
+
   }
 
   protected onInit(): Promise<void> {
-    this._environmentMessage = this._getEnvironmentMessage();
-
-    return super.onInit();
+    return this._getEnvironmentMessage().then(message => {
+      this._environmentMessage = message;
+    });
   }
 
 
 
-  private _getEnvironmentMessage(): string {
-    if (!!this.context.sdks.microsoftTeams) { // running in Teams
-      return this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentTeams : strings.AppTeamsTabEnvironment;
+  private _getEnvironmentMessage(): Promise<string> {
+    if (!!this.context.sdks.microsoftTeams) { // running in Teams, office.com or Outlook
+      return this.context.sdks.microsoftTeams.teamsJs.app.getContext()
+        .then(context => {
+          let environmentMessage: string = '';
+          switch (context.app.host.name) {
+            case 'Office': // running in Office
+              environmentMessage = this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentOffice : strings.AppOfficeEnvironment;
+              break;
+            case 'Outlook': // running in Outlook
+              environmentMessage = this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentOutlook : strings.AppOutlookEnvironment;
+              break;
+            case 'Teams': // running in Teams
+              environmentMessage = this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentTeams : strings.AppTeamsTabEnvironment;
+              break;
+            default:
+              throw new Error('Unknown host');
+          }
+
+          return environmentMessage;
+        });
     }
 
-    return this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentSharePoint : strings.AppSharePointEnvironment;
+    return Promise.resolve(this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentSharePoint : strings.AppSharePointEnvironment);
   }
 
   protected onThemeChanged(currentTheme: IReadonlyTheme | undefined): void {
