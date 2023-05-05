@@ -2,21 +2,21 @@
 
 This module will introduce you to leveraging the property pane for client-side web parts.
 
-> This module is also published as a Microsoft Learn module: [Enable SharePoint Framework Web Part Configuration with Property Panes](https://docs.microsoft.com/learn/modules/sharepoint-spfx-web-part-property-pane)
+> This module is also published as a Microsoft Learn module: [Enable SharePoint Framework Web Part Configuration with Property Panes](https://learn.microsoft.com/training/modules/sharepoint-spfx-web-part-property-pane)
 
 ## Lab - Working with the Web Part Property Pane
 
 The lab for this module is available in multiple units within the associated Microsoft Learn module. Use the following links to jump to the specific unit. Each Microsoft Learn unit represents a different lab exercise & demo in the presentation.
 
-1. [Exercise - Work with the web part property pane](https://docs.microsoft.com/learn/modules/sharepoint-spfx-web-part-property-pane/3-exercise-web-part-property-pane)
+1. [Exercise - Work with the web part property pane](https://learn.microsoft.com/training/modules/sharepoint-spfx-web-part-property-pane/3-exercise-web-part-property-pane)
 
    In this exercise, you'll manipulate the property pane for a SharePoint Framework client-side web part with controls, groups, and pages.
 
-1. [Exercise - Build custom property pane fields](https://docs.microsoft.com/learn/modules/sharepoint-spfx-web-part-property-pane/5-exercise-build-custom-controls)
+1. [Exercise - Build custom property pane fields](https://learn.microsoft.com/training/modules/sharepoint-spfx-web-part-property-pane/5-exercise-build-custom-controls)
 
    In this exercise, you'll extend the property pane by creating your own custom field control.
 
-1. [Exercise - Use the SPFx PnP reusable property pane controls](https://docs.microsoft.com/learn/modules/sharepoint-spfx-web-part-property-pane/7-exercise-pnp-controls)
+1. [Exercise - Use the SPFx PnP reusable property pane controls](https://learn.microsoft.com/training/modules/sharepoint-spfx-web-part-property-pane/7-exercise-pnp-controls)
 
    In this exercise, you'll learn how to use existing third-party controls from the popular PnP SPFx reusable property pane controls project.
 
@@ -35,13 +35,15 @@ This module has been recorded and is available in the SharePoint Development You
 | Roles                | Author(s)                                                                                                      |
 | -------------------- | -------------------------------------------------------------------------------------------------------------- |
 | Lab Manuals / Slides | Andrew Connell (Microsoft MVP, [Voitanos](//github.com/voitanos)) [@andrewconnell](//github.com/andrewconnell) |
-| QA                   | Rob Windsor (Microsoft MVP) [@rob-windsor](//github.com/rob-windsor)                               |
+| QA                   | Rob Windsor (Microsoft MVP) [@rob-windsor](//github.com/rob-windsor)                                           |
 | Sponsor / Support    | Vesa Juvonen (Microsoft) [@VesaJuvonen](//github.com/VesaJuvonen)                                              |
 
 ## Version history
 
-| Version |        Date        |                      Comments                      |
+| Version | Date               | Comments                                           |
 | ------- | ------------------ | -------------------------------------------------- |
+| 1.19    | May 5, 2023        | FY2023Q4 content refresh; update to SPFx v1.17.1   |
+| 1.18    | February 28, 2023  | FY2023Q3 content refresh; update to SPFx v1.16.1   |
 | 1.17    | December 5, 2022   | FY2023Q1 content refresh                           |
 | 1.16    | September 5, 2022  | FY2023Q1 content refresh; updated for SPFx v1.15.2 |
 | 1.15    | May 2, 2022        | FY2022Q3 content refresh; updated for SPFx v1.14   |

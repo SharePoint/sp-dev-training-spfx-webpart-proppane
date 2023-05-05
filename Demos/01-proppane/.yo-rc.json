@@ -2,9 +2,14 @@
   "@microsoft/generator-sharepoint": {
     "plusBeta": false,
     "isCreatingSolution": true,
-    "version": "1.15.2",
+    "nodeVersion": "16.18.1",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.9.1"
+    },
+    "version": "1.17.1",
     "libraryName": "hello-property-pane",
-    "libraryId": "6b212091-dae5-4007-b9c9-e382ef50d52f",
+    "libraryId": "234d7dd1-9237-4c47-98c1-b152c33668da",
     "environment": "spo",
     "packageManager": "npm",
     "solutionName": "HelloPropertyPane",
