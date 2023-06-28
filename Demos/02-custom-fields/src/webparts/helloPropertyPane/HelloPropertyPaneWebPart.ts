@@ -1,6 +1,3 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-
 import { Version } from '@microsoft/sp-core-library';
 import {
   IPropertyPaneConfiguration,
@@ -61,19 +58,35 @@ export default class HelloPropertyPaneWebPart extends BaseClientSideWebPart<IHel
   }
 
   protected onInit(): Promise<void> {
-    this._environmentMessage = this._getEnvironmentMessage();
-
-    return super.onInit();
+    return this._getEnvironmentMessage().then(message => {
+      this._environmentMessage = message;
+    });
   }
 
+  private _getEnvironmentMessage(): Promise<string> {
+    if (!!this.context.sdks.microsoftTeams) { // running in Teams, office.com or Outlook
+      return this.context.sdks.microsoftTeams.teamsJs.app.getContext()
+        .then(context => {
+          let environmentMessage: string = '';
+          switch (context.app.host.name) {
+            case 'Office': // running in Office
+              environmentMessage = this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentOffice : strings.AppOfficeEnvironment;
+              break;
+            case 'Outlook': // running in Outlook
+              environmentMessage = this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentOutlook : strings.AppOutlookEnvironment;
+              break;
+            case 'Teams': // running in Teams
+              environmentMessage = this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentTeams : strings.AppTeamsTabEnvironment;
+              break;
+            default:
+              throw new Error('Unknown host');
+          }
 
-
-  private _getEnvironmentMessage(): string {
-    if (!!this.context.sdks.microsoftTeams) { // running in Teams
-      return this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentTeams : strings.AppTeamsTabEnvironment;
+          return environmentMessage;
+        });
     }
 
-    return this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentSharePoint : strings.AppSharePointEnvironment;
+    return Promise.resolve(this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentSharePoint : strings.AppSharePointEnvironment);
   }
 
   protected onThemeChanged(currentTheme: IReadonlyTheme | undefined): void {
@@ -98,6 +111,42 @@ export default class HelloPropertyPaneWebPart extends BaseClientSideWebPart<IHel
     return Version.parse('1.0');
   }
 
+  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
+    return {
+      pages: [
+        {
+          header: {
+            description: strings.PropertyPaneDescription
+          },
+          groups: [
+            {
+              groupName: strings.BasicGroupName,
+              groupFields: [
+                PropertyPaneTextField('description', {
+                  label: strings.DescriptionFieldLabel
+                }),
+                PropertyPaneTextField('myContinent', {
+                  label: 'Continent where I currently reside',
+                  onGetErrorMessage: this.validateContinents.bind(this)
+                }),
+                PropertyPaneSlider('numContinentsVisited', {
+                  label: 'Number of continents I\'ve visited',
+                  min: 1, max: 7, showValue: true,
+                }),
+                new PropertyPaneContinentSelector('myContinent', <IPropertyPaneContinentSelectorProps>{
+                  label: 'Continent where I currently reside',
+                  disabled: false,
+                  selectedKey: this.properties.myContinent,
+                  onPropertyChange: this.onContinentSelectionChange.bind(this),
+                }),
+              ]
+            }
+          ]
+        }
+      ]
+    };
+  }
+
   private validateContinents(textboxValue: string): string {
     const validContinentOptions: string[] = ['africa', 'antarctica', 'asia', 'australia', 'europe', 'north america', 'south america'];
     const inputToValidate: string = textboxValue.toLowerCase();
@@ -114,39 +163,4 @@ export default class HelloPropertyPaneWebPart extends BaseClientSideWebPart<IHel
   }
   /* eslint-enable @typescript-eslint/no-explicit-any */
 
-  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
-    return {
-      pages: [
-        {
-          header: {
-            description: strings.PropertyPaneDescription
-          },
-          groups: [
-            {
-              groupName: strings.BasicGroupName,
-              groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
-                }),
-                // PropertyPaneTextField('myContinent', {
-                //   label: 'Continent where I currently reside',
-                //   onGetErrorMessage: this.validateContinents.bind(this)
-                // }),
-                new PropertyPaneContinentSelector('myContinent', <IPropertyPaneContinentSelectorProps>{
-                  label: 'Continent where I currently reside',
-                  disabled: false,
-                  selectedKey: this.properties.myContinent,
-                  onPropertyChange: this.onContinentSelectionChange.bind(this),
-                }),
-                PropertyPaneSlider('numContinentsVisited', {
-                  label: 'Number of continents I\'ve visited',
-                  min: 1, max: 7, showValue: true,
-                })
-              ]
-            }
-          ]
-        }
-      ]
-    };
-  }
 }
