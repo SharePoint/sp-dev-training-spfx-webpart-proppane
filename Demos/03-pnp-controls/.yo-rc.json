@@ -2,14 +2,14 @@
   "@microsoft/generator-sharepoint": {
     "plusBeta": false,
     "isCreatingSolution": true,
-    "nodeVersion": "16.18.1",
+    "nodeVersion": "18.20.1",
     "sdksVersions": {
       "@microsoft/microsoft-graph-client": "3.0.2",
-      "@microsoft/teams-js": "2.9.1"
+      "@microsoft/teams-js": "2.12.0"
     },
-    "version": "1.17.1",
+    "version": "1.19.0",
     "libraryName": "hello-pn-p-controls",
-    "libraryId": "06b52315-d33d-4133-9d93-d91b1e8fc3c0",
+    "libraryId": "a252a68a-d6f9-47b3-b6c4-0ad877cda4ca",
     "environment": "spo",
     "packageManager": "npm",
     "solutionName": "HelloPnPControls",

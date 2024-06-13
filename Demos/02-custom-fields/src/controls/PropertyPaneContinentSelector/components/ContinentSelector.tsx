@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   Dropdown,
   IDropdownOption
-} from 'office-ui-fabric-react/lib/components/Dropdown';
+} from '@fluentui/react';
 import { IContinentSelectorProps } from './IContinentSelectorProps';
 import { IContinentSelectorState } from './IContinentSelectorState';
 
