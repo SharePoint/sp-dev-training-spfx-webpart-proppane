@@ -10,6 +10,7 @@ declare interface IHelloPnPControlsWebPartStrings {
   AppTeamsTabEnvironment: string;
   AppOfficeEnvironment: string;
   AppOutlookEnvironment: string;
+  UnknownEnvironment: string;
 }
 
 declare module 'HelloPnPControlsWebPartStrings' {

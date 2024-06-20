@@ -1,4 +1,4 @@
-import { IDropdownOption } from 'office-ui-fabric-react/lib/components/Dropdown';
+import { IDropdownOption } from '@fluentui/react';
 
 export interface IContinentSelectorState {
   options: IDropdownOption[];

@@ -4,7 +4,7 @@ import {
   IPropertyPaneField,
   PropertyPaneFieldType
 } from '@microsoft/sp-property-pane';
-import { IDropdownOption } from 'office-ui-fabric-react/lib/components/Dropdown';
+import { IDropdownOption } from '@fluentui/react';
 import { IContinentSelectorProps } from './components/IContinentSelectorProps';
 import ContinentSelector from './components/ContinentSelector';
 import {
@@ -57,5 +57,4 @@ export class PropertyPaneContinentSelector implements IPropertyPaneField<IProper
   private onChanged(option: IDropdownOption, index?: number): void {
     this.properties.onPropertyChange(this.targetProperty, option.key);
   }
-
 }

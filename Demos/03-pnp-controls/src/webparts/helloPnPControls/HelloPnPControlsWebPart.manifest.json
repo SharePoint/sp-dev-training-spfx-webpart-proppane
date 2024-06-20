@@ -1,6 +1,6 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
-  "id": "4f1118bf-d941-4652-9be2-a6fd4f640f7c",
+  "id": "1944414d-bc3b-475e-9c22-897e86782958",
   "alias": "HelloPnPControlsWebPart",
   "componentType": "WebPart",
 

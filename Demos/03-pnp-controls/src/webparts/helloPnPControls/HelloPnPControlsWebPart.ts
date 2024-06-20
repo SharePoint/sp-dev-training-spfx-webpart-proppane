@@ -1,25 +1,24 @@
 import { Version } from '@microsoft/sp-core-library';
 import {
-  IPropertyPaneConfiguration,
+  type IPropertyPaneConfiguration,
   PropertyPaneTextField
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
-import { IReadonlyTheme } from '@microsoft/sp-component-base';
+import type { IReadonlyTheme } from '@microsoft/sp-component-base';
 import { escape } from '@microsoft/sp-lodash-subset';
 
 import styles from './HelloPnPControlsWebPart.module.scss';
 import * as strings from 'HelloPnPControlsWebPartStrings';
 
 import {
-  PropertyFieldCollectionData,
-  CustomCollectionFieldType
-} from '@pnp/spfx-property-controls/lib/PropertyFieldCollectionData';
-
-import {
   IPropertyFieldGroupOrPerson,
   PropertyFieldPeoplePicker,
   PrincipalType
 } from '@pnp/spfx-property-controls/lib/PropertyFieldPeoplePicker';
+import {
+  PropertyFieldCollectionData,
+  CustomCollectionFieldType
+} from '@pnp/spfx-property-controls/lib/PropertyFieldCollectionData';
 
 export interface IHelloPnPControlsWebPartProps {
   description: string;
@@ -41,8 +40,14 @@ export default class HelloPnPControlsWebPart extends BaseClientSideWebPart<IHell
         <div>${this._environmentMessage}</div>
         <div>Web part property value: <strong>${escape(this.properties.description)}</strong></div>
       </div>
-      <div class="selectedPeople"></div>
-      <div class="expansionOptions"></div>
+      <div>
+        <h3>Welcome to SharePoint Framework!</h3>
+        <p>
+        The SharePoint Framework (SPFx) is a extensibility model for Microsoft Viva, Microsoft Teams and SharePoint. It's the easiest way to extend Microsoft 365 with automatic Single Sign On, automatic hosting and industry standard tooling.
+        </p>
+        <div class="selectedPeople"></div>
+        <div class="expansionOptions"></div>
+      </div>
     </section>`;
 
     if (this.properties.people && this.properties.people.length > 0) {
@@ -72,6 +77,8 @@ export default class HelloPnPControlsWebPart extends BaseClientSideWebPart<IHell
     });
   }
 
+
+
   private _getEnvironmentMessage(): Promise<string> {
     if (!!this.context.sdks.microsoftTeams) { // running in Teams, office.com or Outlook
       return this.context.sdks.microsoftTeams.teamsJs.app.getContext()
@@ -85,10 +92,11 @@ export default class HelloPnPControlsWebPart extends BaseClientSideWebPart<IHell
               environmentMessage = this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentOutlook : strings.AppOutlookEnvironment;
               break;
             case 'Teams': // running in Teams
+            case 'TeamsModern':
               environmentMessage = this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentTeams : strings.AppTeamsTabEnvironment;
               break;
             default:
-              throw new Error('Unknown host');
+              environmentMessage = strings.UnknownEnvironment;
           }
 
           return environmentMessage;
@@ -142,7 +150,6 @@ export default class HelloPnPControlsWebPart extends BaseClientSideWebPart<IHell
                   onPropertyChange: this.onPropertyPaneFieldChanged,
                   context: this.context as any, // eslint-disable-line @typescript-eslint/no-explicit-any
                   properties: this.properties,
-                  onGetErrorMessage: null,
                   deferredValidationTime: 0,
                   key: 'peopleFieldId'
                 }),
@@ -174,6 +181,7 @@ export default class HelloPnPControlsWebPart extends BaseClientSideWebPart<IHell
                     }
                   ]
                 })
+
               ]
             }
           ]

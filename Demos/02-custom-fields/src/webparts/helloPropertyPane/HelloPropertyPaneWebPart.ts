@@ -1,11 +1,11 @@
 import { Version } from '@microsoft/sp-core-library';
 import {
-  IPropertyPaneConfiguration,
+  type IPropertyPaneConfiguration,
   PropertyPaneTextField,
   PropertyPaneSlider
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
-import { IReadonlyTheme } from '@microsoft/sp-component-base';
+import type { IReadonlyTheme } from '@microsoft/sp-component-base';
 import { escape, update } from '@microsoft/sp-lodash-subset';
 
 import styles from './HelloPropertyPaneWebPart.module.scss';
@@ -20,6 +20,7 @@ export interface IHelloPropertyPaneWebPartProps {
   description: string;
   myContinent: string;
   numContinentsVisited: number;
+  customField: string;
 }
 
 export default class HelloPropertyPaneWebPart extends BaseClientSideWebPart<IHelloPropertyPaneWebPartProps> {
@@ -63,6 +64,8 @@ export default class HelloPropertyPaneWebPart extends BaseClientSideWebPart<IHel
     });
   }
 
+
+
   private _getEnvironmentMessage(): Promise<string> {
     if (!!this.context.sdks.microsoftTeams) { // running in Teams, office.com or Outlook
       return this.context.sdks.microsoftTeams.teamsJs.app.getContext()
@@ -76,10 +79,11 @@ export default class HelloPropertyPaneWebPart extends BaseClientSideWebPart<IHel
               environmentMessage = this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentOutlook : strings.AppOutlookEnvironment;
               break;
             case 'Teams': // running in Teams
+            case 'TeamsModern':
               environmentMessage = this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentTeams : strings.AppTeamsTabEnvironment;
               break;
             default:
-              throw new Error('Unknown host');
+              environmentMessage = strings.UnknownEnvironment;
           }
 
           return environmentMessage;
@@ -125,20 +129,20 @@ export default class HelloPropertyPaneWebPart extends BaseClientSideWebPart<IHel
                 PropertyPaneTextField('description', {
                   label: strings.DescriptionFieldLabel
                 }),
-                PropertyPaneTextField('myContinent', {
-                  label: 'Continent where I currently reside',
-                  onGetErrorMessage: this.validateContinents.bind(this)
-                }),
-                PropertyPaneSlider('numContinentsVisited', {
-                  label: 'Number of continents I\'ve visited',
-                  min: 1, max: 7, showValue: true,
-                }),
+                // PropertyPaneTextField('myContinent', {
+                //   label: 'Continent where I currently reside',
+                //   onGetErrorMessage: this.validateContinents.bind(this)
+                // }),
                 new PropertyPaneContinentSelector('myContinent', <IPropertyPaneContinentSelectorProps>{
                   label: 'Continent where I currently reside',
                   disabled: false,
                   selectedKey: this.properties.myContinent,
                   onPropertyChange: this.onContinentSelectionChange.bind(this),
                 }),
+                PropertyPaneSlider('numContinentsVisited', {
+                  label: 'Number of continents I\'ve visited',
+                  min: 1, max: 7, showValue: true,
+                })
               ]
             }
           ]
@@ -147,14 +151,14 @@ export default class HelloPropertyPaneWebPart extends BaseClientSideWebPart<IHel
     };
   }
 
-  private validateContinents(textboxValue: string): string {
-    const validContinentOptions: string[] = ['africa', 'antarctica', 'asia', 'australia', 'europe', 'north america', 'south america'];
-    const inputToValidate: string = textboxValue.toLowerCase();
+  // private validateContinents(textboxValue: string): string {
+  //   const validContinentOptions: string[] = ['africa', 'antarctica', 'asia', 'australia', 'europe', 'north america', 'south america'];
+  //   const inputToValidate: string = textboxValue.toLowerCase();
 
-    return (validContinentOptions.indexOf(inputToValidate) === -1)
-      ? 'Invalid continent entry; valid options are "Africa", "Antarctica", "Asia", "Australia", "Europe", "North America", and "South America"'
-      : '';
-  }
+  //   return (validContinentOptions.indexOf(inputToValidate) === -1)
+  //     ? 'Invalid continent entry; valid options are "Africa", "Antarctica", "Asia", "Australia", "Europe", "North America", and "South America"'
+  //     : '';
+  // }
 
   /* eslint-disable @typescript-eslint/no-explicit-any */
   private onContinentSelectionChange(propertyPath: string, newValue: any): void {
