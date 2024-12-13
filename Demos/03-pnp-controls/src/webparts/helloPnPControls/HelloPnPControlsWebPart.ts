@@ -53,19 +53,19 @@ export default class HelloPnPControlsWebPart extends BaseClientSideWebPart<IHell
     if (this.properties.people && this.properties.people.length > 0) {
       let peopleList: string = '';
       this.properties.people.forEach((person) => {
-        peopleList = peopleList + `<li>${ person.fullName } (${ person.email })</li>`;
+        peopleList = peopleList + `<li>${person.fullName} (${person.email})</li>`;
       });
 
-      this.domElement.getElementsByClassName('selectedPeople')[0].innerHTML = `<ul>${ peopleList }</ul>`;
+      this.domElement.getElementsByClassName('selectedPeople')[0].innerHTML = `<ul>${peopleList}</ul>`;
     }
 
     if (this.properties.expansionOptions && this.properties.expansionOptions.length > 0) {
-      let expansionOptions: string  = '';
+      let expansionOptions: string = '';
       this.properties.expansionOptions.forEach((option) => {
-        expansionOptions = expansionOptions + `<li>${ option.Region }: ${ option.Comment } </li>`;
+        expansionOptions = expansionOptions + `<li>${option.Region}: ${option.Comment} </li>`;
       });
       if (expansionOptions.length > 0) {
-        this.domElement.getElementsByClassName('expansionOptions')[0].innerHTML = `<ul>${ expansionOptions }</ul>`;
+        this.domElement.getElementsByClassName('expansionOptions')[0].innerHTML = `<ul>${expansionOptions}</ul>`;
       }
     }
 
@@ -189,4 +189,5 @@ export default class HelloPnPControlsWebPart extends BaseClientSideWebPart<IHell
       ]
     };
   }
+
 }
