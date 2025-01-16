@@ -137,7 +137,7 @@ export default class HelloPropertyPaneWebPart extends BaseClientSideWebPart<IHel
                   label: 'Continent where I currently reside',
                   disabled: false,
                   selectedKey: this.properties.myContinent,
-                  onPropertyChange: this.onContinentSelectionChange.bind(this),
+                  onPropertyChange: this.onContinentSelectionChange.bind(this)
                 }),
                 PropertyPaneSlider('numContinentsVisited', {
                   label: 'Number of continents I\'ve visited',
