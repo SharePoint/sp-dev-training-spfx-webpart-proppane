@@ -9,8 +9,6 @@ import { escape } from '@microsoft/sp-lodash-subset';
 
 import styles from './HelloPnPControlsWebPart.module.scss';
 import * as strings from 'HelloPnPControlsWebPartStrings';
-import welcomeDark from './assets/welcome-dark.png';
-import welcomeLight from './assets/welcome-light.png';
 
 import {
   IPropertyFieldGroupOrPerson,
@@ -25,6 +23,10 @@ import {
 export interface IHelloPnPControlsWebPartProps {
   description: string;
   people: IPropertyFieldGroupOrPerson[];
+  expansionOptions: Array<{
+    Region: string;
+    Comment: string;
+  }>;
 }
 
 export default class HelloPnPControlsWebPart extends BaseClientSideWebPart<IHelloPnPControlsWebPartProps> {
@@ -42,25 +44,28 @@ export default class HelloPnPControlsWebPart extends BaseClientSideWebPart<IHell
         <div>Web part property value: <strong>${escape(this.properties.description)}</strong></div>
       </div>
       <div class="selectedPeople"></div>
+      <div class="expansionOptions"></div>
     </section>`;
 
     if (this.properties.people && this.properties.people.length > 0) {
-      let peopleList: string = '';
+      const peopleList: HTMLUListElement = document.createElement('ul');
       this.properties.people.forEach((person) => {
-        peopleList = peopleList + `<li>${person.fullName} (${person.email})</li>`;
+        const personItem: HTMLLIElement = document.createElement('li');
+        personItem.textContent = `${person.fullName} (${person.email})`;
+        peopleList.appendChild(personItem);
       });
 
-      this.domElement.getElementsByClassName('selectedPeople')[0].innerHTML = `<ul>${peopleList}</ul>`;
+      this.domElement.getElementsByClassName('selectedPeople')[0].appendChild(peopleList);
     }
 
     if (this.properties.expansionOptions && this.properties.expansionOptions.length > 0) {
-      let expansionOptions: string = '';
+      const expansionOptions: HTMLUListElement = document.createElement('ul');
       this.properties.expansionOptions.forEach((option) => {
-        expansionOptions = expansionOptions + `<li>${option.Region}: ${option.Comment} </li>`;
+        const expansionOption: HTMLLIElement = document.createElement('li');
+        expansionOption.textContent = `${option.Region}: ${option.Comment}`;
+        expansionOptions.appendChild(expansionOption);
       });
-      if (expansionOptions.length > 0) {
-        this.domElement.getElementsByClassName('expansionOptions')[0].innerHTML = `<ul>${expansionOptions}</ul>`;
-      }
+      this.domElement.getElementsByClassName('expansionOptions')[0].appendChild(expansionOptions);
     }
 
   }
@@ -145,6 +150,7 @@ export default class HelloPnPControlsWebPart extends BaseClientSideWebPart<IHell
                   context: this.context as any, // eslint-disable-line @typescript-eslint/no-explicit-any
                   properties: this.properties,
                   deferredValidationTime: 0,
+                  searchTextLimit: 3,
                   key: 'peopleFieldId'
                 }),
                 PropertyFieldCollectionData('expansionOptions', {
