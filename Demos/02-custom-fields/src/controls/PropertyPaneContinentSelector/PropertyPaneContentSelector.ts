@@ -15,7 +15,7 @@ import {
 export class PropertyPaneContinentSelector implements IPropertyPaneField<IPropertyPaneContinentSelectorProps> {
   public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
   public properties: IPropertyPaneContinentSelectorInternalProps;
-  private element: HTMLElement;
+  private element?: HTMLElement;
 
   constructor(public targetProperty: string, properties: IPropertyPaneContinentSelectorProps) {
     this.properties = {

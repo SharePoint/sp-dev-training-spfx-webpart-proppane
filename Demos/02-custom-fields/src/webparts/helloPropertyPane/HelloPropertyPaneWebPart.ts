@@ -10,6 +10,8 @@ import { escape, update } from '@microsoft/sp-lodash-subset';
 
 import styles from './HelloPropertyPaneWebPart.module.scss';
 import * as strings from 'HelloPropertyPaneWebPartStrings';
+import welcomeDark from './assets/welcome-dark.png';
+import welcomeLight from './assets/welcome-light.png';
 
 import {
   PropertyPaneContinentSelector,
@@ -20,7 +22,6 @@ export interface IHelloPropertyPaneWebPartProps {
   description: string;
   myContinent: string;
   numContinentsVisited: number;
-  customField: string;
 }
 
 export default class HelloPropertyPaneWebPart extends BaseClientSideWebPart<IHelloPropertyPaneWebPartProps> {
@@ -32,7 +33,7 @@ export default class HelloPropertyPaneWebPart extends BaseClientSideWebPart<IHel
     this.domElement.innerHTML = `
     <section class="${styles.helloPropertyPane} ${!!this.context.sdks.microsoftTeams ? styles.teams : ''}">
       <div class="${styles.welcome}">
-        <img alt="" src="${this._isDarkTheme ? require('./assets/welcome-dark.png') : require('./assets/welcome-light.png')}" class="${styles.welcomeImage}" />
+        <img alt="" src="${this._isDarkTheme ? welcomeDark : welcomeLight}" class="${styles.welcomeImage}" />
         <h2>Well done, ${escape(this.context.pageContext.user.displayName)}!</h2>
         <div>${this._environmentMessage}</div>
         <div>Web part property value: <strong>${escape(this.properties.description)}</strong></div>
@@ -64,7 +65,14 @@ export default class HelloPropertyPaneWebPart extends BaseClientSideWebPart<IHel
     });
   }
 
+  private validateContinents(textboxValue: string): string {
+    const validContinentOptions: string[] = ['africa', 'antarctica', 'asia', 'australia', 'europe', 'north america', 'south america'];
+    const inputToValidate: string = textboxValue.toLowerCase();
 
+    return (validContinentOptions.indexOf(inputToValidate) === -1)
+      ? 'Invalid continent entry; valid options are "Africa", "Antarctica", "Asia", "Australia", "Europe", "North America", and "South America"'
+      : '';
+  }
 
   private _getEnvironmentMessage(): Promise<string> {
     if (!!this.context.sdks.microsoftTeams) { // running in Teams, office.com or Outlook
@@ -137,7 +145,7 @@ export default class HelloPropertyPaneWebPart extends BaseClientSideWebPart<IHel
                   label: 'Continent where I currently reside',
                   disabled: false,
                   selectedKey: this.properties.myContinent,
-                  onPropertyChange: this.onContinentSelectionChange.bind(this)
+                  onPropertyChange: this.onContinentSelectionChange.bind(this),
                 }),
                 PropertyPaneSlider('numContinentsVisited', {
                   label: 'Number of continents I\'ve visited',
@@ -151,18 +159,9 @@ export default class HelloPropertyPaneWebPart extends BaseClientSideWebPart<IHel
     };
   }
 
-  // private validateContinents(textboxValue: string): string {
-  //   const validContinentOptions: string[] = ['africa', 'antarctica', 'asia', 'australia', 'europe', 'north america', 'south america'];
-  //   const inputToValidate: string = textboxValue.toLowerCase();
-
-  //   return (validContinentOptions.indexOf(inputToValidate) === -1)
-  //     ? 'Invalid continent entry; valid options are "Africa", "Antarctica", "Asia", "Australia", "Europe", "North America", and "South America"'
-  //     : '';
-  // }
-
   /* eslint-disable @typescript-eslint/no-explicit-any */
   private onContinentSelectionChange(propertyPath: string, newValue: any): void {
-    update(this.properties, propertyPath, (): any => { return newValue });
+    update(this.properties, propertyPath, (): any => {return newValue});
     this.render();
   }
   /* eslint-enable @typescript-eslint/no-explicit-any */

@@ -9,6 +9,8 @@ import { escape } from '@microsoft/sp-lodash-subset';
 
 import styles from './HelloPnPControlsWebPart.module.scss';
 import * as strings from 'HelloPnPControlsWebPartStrings';
+import welcomeDark from './assets/welcome-dark.png';
+import welcomeLight from './assets/welcome-light.png';
 
 import {
   IPropertyFieldGroupOrPerson,
@@ -23,7 +25,6 @@ import {
 export interface IHelloPnPControlsWebPartProps {
   description: string;
   people: IPropertyFieldGroupOrPerson[];
-  expansionOptions: any[]; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 export default class HelloPnPControlsWebPart extends BaseClientSideWebPart<IHelloPnPControlsWebPartProps> {
@@ -40,14 +41,7 @@ export default class HelloPnPControlsWebPart extends BaseClientSideWebPart<IHell
         <div>${this._environmentMessage}</div>
         <div>Web part property value: <strong>${escape(this.properties.description)}</strong></div>
       </div>
-      <div>
-        <h3>Welcome to SharePoint Framework!</h3>
-        <p>
-        The SharePoint Framework (SPFx) is a extensibility model for Microsoft Viva, Microsoft Teams and SharePoint. It's the easiest way to extend Microsoft 365 with automatic Single Sign On, automatic hosting and industry standard tooling.
-        </p>
-        <div class="selectedPeople"></div>
-        <div class="expansionOptions"></div>
-      </div>
+      <div class="selectedPeople"></div>
     </section>`;
 
     if (this.properties.people && this.properties.people.length > 0) {
@@ -181,7 +175,6 @@ export default class HelloPnPControlsWebPart extends BaseClientSideWebPart<IHell
                     }
                   ]
                 })
-
               ]
             }
           ]
@@ -189,5 +182,4 @@ export default class HelloPnPControlsWebPart extends BaseClientSideWebPart<IHell
       ]
     };
   }
-
 }
